@@ -192,6 +192,27 @@
 
                     
 
+                    
+                        <hr>
+                        <div id="git-container"></div>
+                        <!-- github issue comment embedded js start -->
+                        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                        <script>
+                            var gitment = new Gitment({
+                                id: 'http://isliulei.com/about/index.html', // 可选。默认为 location.href
+                                owner: 'ray1121',
+                                repo: 'ray1121.github.io',
+                                oauth: {
+                                    client_id: '0dec358cb186e06c3ed5',
+                                    client_secret: '2e4b2be32341a8a745d1841f0b1fcb8fe0da42c5',
+                                }
+                            })
+                            gitment.render('git-container');
+                        </script>
+                        <!-- github issue embedded js code start end -->
+                        
+
 
 
                 

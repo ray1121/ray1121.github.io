@@ -198,7 +198,10 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-
+                <blockquote>
+                    本文为原创作为学习交流笔记，如有错误请您指出，共同进步 <br/>
+                    转载请注明来源：<a href="http://isliulei.com/2018/01/05/hello-world/" rel="noopener" title="http://isliulei.com/2018/01/05/hello-world/">http://isliulei.com/2018/01/05/hello-world/</a>
+                    </blockquote>
                 <hr>
 
                 
@@ -215,7 +218,11 @@
                 
 
                 
-
+                <!-- github isuue comment container-->
+                
+                    <hr>
+                    <div id="git-container"></div>
+                
             </div>
     <!-- Side Catalog Container -->
         
@@ -283,7 +290,59 @@
 
 
 
+<!-- gitcoment JS代码 -->
 
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    var gitment = new Gitment({
+      id: 'http://isliulei.com/2018/01/05/hello-world/', // 可选。默认为 location.href
+      owner: 'ray1121',
+      repo: 'ray1121.github.io',
+      oauth: {
+        client_id: '0dec358cb186e06c3ed5',
+        client_secret: '2e4b2be32341a8a745d1841f0b1fcb8fe0da42c5',
+      },
+    })
+    gitment.render('git-container')
+    </script>
+    <!-- gitcoment 代码结束 -->
+    
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
 
