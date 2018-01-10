@@ -7,29 +7,29 @@
     </url>
     
     <url>
-        <loc>https://isliulei.com/404.html</loc>
-        <lastmod>2018-01-10T05:53:20.527Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://isliulei.com/archives/</loc>
-        <lastmod>2018-01-10T05:24:02.193Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
         <loc>https://isliulei.com/about/</loc>
-        <lastmod>2018-01-07T12:38:02.811Z</lastmod>
+        <lastmod>2018-01-10T06:54:19.626Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://isliulei.com/tags/</loc>
-        <lastmod>2018-01-07T10:09:28.000Z</lastmod>
+        <lastmod>2018-01-10T06:53:24.190Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://isliulei.com/archives/</loc>
+        <lastmod>2018-01-10T06:52:58.049Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://isliulei.com/404.html</loc>
+        <lastmod>2018-01-10T05:53:20.527Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
