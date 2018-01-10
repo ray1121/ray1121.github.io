@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <!-- Head tag -->
 <head>
@@ -27,7 +27,7 @@
 
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
-
+    <link rel="stylesheet" href="/css/rocket.css">
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
@@ -55,7 +55,48 @@
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
+    <!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/default_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
 
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#test" title="test">test</a>
+                            
+                              <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                            
+                        </div>
+                        <h1>MyTest</h1>
+                        <h2 class="subheading">这是我测试用的文章</h2>
+                        <span class="meta">
+                            Posted by Ray on
+                            2018-01-06
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -84,24 +125,24 @@
                     </li>
 
                     
-
+                        
                         
                         <li>
                             <a href="/about/">关于我</a>
                         </li>
                         
                     
-
+                        
                         
                         <li>
                             <a href="/tags/">标签</a>
                         </li>
                         
                     
-
+                        
                         
                         <li>
-                            <a href="/archives/">文章档案</a>
+                            <a href="/archives/">archives</a>
                         </li>
                         
                     
@@ -149,35 +190,6 @@
 <!-- <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        background-image: url('/img/default_bg.jpg')
-    }
-</style>
-<header class="intro-header" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                          <a class="tag" href="/tags/#test" title="test">test</a>
-                        
-                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
-                        
-                    </div>
-                    <h1>MyTest</h1>
-                    <h2 class="subheading">这是我测试用的文章</h2>
-                    <span class="meta">
-                        Posted by Ray on
-                        2018-01-06
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
 <!-- Post Content -->
 <article>
@@ -201,8 +213,7 @@
                     </blockquote>
                 <hr>
 
-                
-
+               
                 <ul class="pager">
                     
                     
@@ -211,10 +222,6 @@
                         </li>
                     
                 </ul>
-
-                
-
-                
                     <!-- github isuue comment container-->
     
         <hr>
@@ -298,10 +305,6 @@
     </script>
     <!-- gitcoment 代码结束 -->
     
-    
-
-
-
 
 
 
@@ -481,11 +484,11 @@
 
 
 
-
+    <a id="rocket" href="#top" class=""></a>
 <!-- Image to hack wechat -->
 <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
-
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
 </body>
 
 </html>

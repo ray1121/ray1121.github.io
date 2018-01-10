@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <!-- Head tag -->
 <head>
@@ -27,7 +27,7 @@
 
     <!-- Pygments Highlight CSS -->
     <link rel="stylesheet" href="/css/highlight.css">
-
+    <link rel="stylesheet" href="/css/rocket.css">
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
@@ -55,7 +55,38 @@
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
+    <!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/index-bg.jpg') 
+            /*config*/
+        
+    }
+    
+</style>
 
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>Ray</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">This is liulei</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
@@ -84,24 +115,24 @@
                     </li>
 
                     
-
+                        
                         
                         <li>
                             <a href="/about/">关于我</a>
                         </li>
                         
                     
-
+                        
                         
                         <li>
                             <a href="/tags/">标签</a>
                         </li>
                         
                     
-
+                        
                         
                         <li>
-                            <a href="/archives/">文章档案</a>
+                            <a href="/archives/">archives</a>
                         </li>
                         
                     
@@ -144,20 +175,7 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/index-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Ray</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">This is liulei</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+    
 
 
 
@@ -481,11 +499,11 @@ Qu......
 
 
 
-
+    <a id="rocket" href="#top" class=""></a>
 <!-- Image to hack wechat -->
 <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
-
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
 </body>
 
 </html>
