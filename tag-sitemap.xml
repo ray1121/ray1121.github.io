@@ -2,43 +2,22 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://isliulei.com/tags/test/</loc>
-        <lastmod>2018-01-09T08:51:40.899Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://isliulei.com/tags/hexo/</loc>
-        <lastmod>2018-01-09T08:51:40.899Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://isliulei.com/tags/%E7%94%9F%E6%B4%BB/</loc>
-        <lastmod>2018-01-10T12:12:36.210Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://isliulei.com/tags/Blog/</loc>
-        <lastmod>2018-01-10T12:16:36.000Z</lastmod>
+        <lastmod>2018-01-11T06:52:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://isliulei.com/tags/Hexo/</loc>
-        <lastmod>2018-01-10T12:16:36.000Z</lastmod>
+        <lastmod>2018-01-11T06:52:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://isliulei.com/tags/GitPage/</loc>
-        <lastmod>2018-01-10T12:16:36.000Z</lastmod>
+        <lastmod>2018-01-11T06:52:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
