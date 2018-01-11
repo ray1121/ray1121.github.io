@@ -3,6 +3,44 @@
 
 
     
+  <url>
+    <loc>https://isliulei.com/article/About-My-Blog-Site/</loc>
+    <lastmod>2018-01-10T12:16:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>About My Blog Site</title>
+        <pubTime>2018-01-10T12:10:57.000Z</pubTime>
+        
+        <tag>Blog</tag>
+         
+        <tag>Hexo</tag>
+         
+        <tag>GitPage</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/hello-world/</loc>
+    <lastmod>2018-01-10T12:12:36.210Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-01-05T06:10:46.835Z</pubTime>
+        
+        <tag>生活</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
     
     
     
@@ -18,23 +56,6 @@
         <tag>test</tag>
          
         <tag>hexo</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/hello-world/</loc>
-    <lastmod>2018-01-06T13:41:50.936Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-01-05T06:10:46.835Z</pubTime>
-        
-        <tag>生活</tag>
          
          
            
