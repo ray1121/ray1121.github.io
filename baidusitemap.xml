@@ -4,8 +4,33 @@
 
     
   <url>
+    <loc>https://isliulei.com/article/JS-module/</loc>
+    <lastmod>2018-01-17T08:11:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>JS的模块机制梳理和总结</title>
+        <pubTime>2018-01-16T08:08:20.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>Node</tag>
+         
+        <tag>ES6</tag>
+         
+        <tag>Commonjs</tag>
+         
+        <tag>模块机制</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://isliulei.com/article/About-My-Blog-Site/</loc>
-    <lastmod>2018-01-11T11:28:25.540Z</lastmod>
+    <lastmod>2018-01-11T11:28:51.000Z</lastmod>
     <data>
         <display>
         <title>About My Blog Site</title>

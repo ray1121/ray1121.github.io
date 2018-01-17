@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="AWIlOY2Rc6" />
+    <meta name="baidu-site-verification" content="NoiX8Y5AVD" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hi~这是刘雷，USTC软件工程研二学生党一枚，JS，Node，python爱好者，web开发小学生，热爱科比热爱詹姆斯">
+    <meta name="keyword"  content="javascript,Node,python,web,USTC">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          JS的模块机制梳理和总结 - 刘雷的博客 | Ray&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://isliulei.com/article/JS-module/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+    <!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/default_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            
+                              <a class="tag" href="/tags/#Node" title="Node">Node</a>
+                            
+                              <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+                            
+                              <a class="tag" href="/tags/#Commonjs" title="Commonjs">Commonjs</a>
+                            
+                              <a class="tag" href="/tags/#模块机制" title="模块机制">模块机制</a>
+                            
+                        </div>
+                        <h1>JS的模块机制梳理和总结</h1>
+                        <h2 class="subheading">“砖规”</h2>
+                        <span class="meta">
+                            Posted by Ray on
+                            2018-01-16
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Ray</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/archives/">archives</a>
+                        </li>
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>java有类文件，Python有import机制，Ruby有require等，而Javascript 通过<code>&lt;script&gt;</code>标签引入代码的机制显得杂乱无章，语言自身毫无组织能力，人们不得不用命名空间的等方式人为的组织代码，以求达到安全易用的目的</p>
+<footer><strong>《深入浅出Nodejs》--朴灵</strong></footer></blockquote>
+<p>模块一直以来都是组织大型软件的必备的要素，就像建筑和砖，“砖”的组织规则更是需要最先明确的事情，一直以来JS在语言层面都没能给模块机制足够的重视，知道ES6的module的出现仿佛给出了最终解决的方案，但是毕竟ES6的module还没能得到良好的支持，其中所面临的复杂情况可想而知，因为业务场景的多样性导致似乎哪一种模块机制都感觉到了众口难调，虽然Node8已经对绝大部分的ES6语法提供了非常好的支持，但是要想使用ES6的模块机制还是必须要使用类似babel的转义工具才能做到并不是那么“无畏”的使用。本文从最简单的模块开始，然后主要从Node的模块规范和ES6的模块机制对模块进行梳理。</p>
+<h2 id="“模块化”的基本实现"><a href="#“模块化”的基本实现" class="headerlink" title="“模块化”的基本实现"></a>“模块化”的基本实现</h2><p>每次在注册成为某一个网站或者应用的用户时最让人心碎的的就是自己常用的用户名已经存在了，很紧张得换了几个还能接受的用户名发现自己的想法总是很受欢迎，于是即便放着《不将就》也无奈的选择了在自己的用户名后面加上了自己的生日数字…<br>这里也不太方便讨论如果加上了生日数字之后，表单校正还是提示你“该用户名已经存在！”的情况，剪网线就完事了。</p>
+<img src="/article/JS-module/alert.png">
+<p>我想表达的意思实际就是，<strong>全局环境下的变量的命名冲突</strong>，变量太多难免词穷情况很常见，所以这一定是模块化给我们带来的好处，有了模块你就可以继续用你喜欢的用户名，只不过你得介绍清楚，你是“村口第五家.Ray”</p>
+<img src="/article/JS-module/yibasuo.png">
+<p>无需多言，上图表达了一切。良好的模块化，是<strong>代码复用与工程解耦</strong>的关键，”一把梭”确实爽，讲究一个我不管你里面怎么翻滚，你暴露给我干净的接口，我还你一个讲究的git star。</p>
+<p>如果一个包依赖另一个包，你一把梭的时候还要手动先把它依赖的那个包梭进来，过分之，那个它依赖的包有依赖好几个别的包，甚至有些情况中你甚至还要很在意你手动添加依赖的顺序，这种梭法，一旦项目复杂，光是对这些“梭法”的管理都让人心烦了，所以为了省心，模块机制也务必要面对<strong>解析依赖，管理依赖</strong>这个本身就很繁琐的任务。</p>
+<p>所以进入正题，针对前面提到的几点，看一看简单的模块实现。</p>
+<ul>
+<li>最简单的模块化可以理解成一个一个的<strong>封装函数</strong>,每一个封装的函数去完成特定的功能，调用函数的方式进行复用。但是存在着类似于a，b污染了全局变量的缺点</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> module1 = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// dosomething</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> module2 = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">// dosomething</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用对象封装</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;</span><br><span class="line">　　　　_count : <span class="number">0</span>,</span><br><span class="line">　　　　m1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="comment">//...</span></span><br><span class="line">　　　　&#125;,</span><br><span class="line">　　　　m2 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="comment">//...</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br><span class="line">　　<span class="comment">// module1.m1</span></span><br><span class="line">　　<span class="comment">// module1.m2</span></span><br></pre></td></tr></table></figure>
+<p>缺点：往往存在不想让外部访问的变量(module1._count)，这种方式就不能满足了（不考虑使用Object.defineProperty）</p>
+<ul>
+<li><strong>立即执行函数的方式</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">var</span> module1 = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> _count = <span class="number">0</span>;</span><br><span class="line">　　　　<span class="keyword">var</span> m1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="comment">//...</span></span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　　　<span class="keyword">var</span> m2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="comment">//...</span></span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　　　m1 : m1,</span><br><span class="line">　　　　　　m2 : m2</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　&#125;)();</span><br></pre></td></tr></table></figure>
+<p>通过自执行函数可以只返回想返回的东西。</p>
+<p>如果此模块内想继承使用类似于jquery等库则就需要显示的将库传入到自执行函数中了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = (<span class="function"><span class="keyword">function</span> (<span class="params">$, axios</span>) </span>&#123;</span><br><span class="line">　　　　<span class="comment">//...</span></span><br><span class="line">　　&#125;)(jQuery, axios);</span><br></pre></td></tr></table></figure>
+<h2 id="浏览器传统加载模块规则"><a href="#浏览器传统加载模块规则" class="headerlink" title="浏览器传统加载模块规则"></a>浏览器传统加载模块规则</h2><p><strong>1.默认方法</strong></p>
+<p>通过<code>&lt;script&gt;</code>标签加载 JavaScript 脚本，默认是同步加载执行的，渲染引擎如果遇到<code>&lt;script&gt;</code>会停下来，知道脚本下载执行完成</p>
+<p><strong>2.异步方法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/lib/test.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/lib/test.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>defer 和 async属性</strong></p>
+<ol>
+<li>defer 会让该标签引用的脚本在DOM完全解析之后，并且引用的其他脚本执行完成之后，才会执行；多个defer会按照在页面上出现的顺序依次执行</li>
+<li>async 类似于异步回调函数，加载完成或，渲染引擎就会立即停下来去执行该脚本，多个async脚本不能后保证执行的顺序</li>
+</ol>
+<h2 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h2><p>Node 的模块系统就是参照着CommonJs规范所实现的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line">path.join(__dirname,path.sep)</span><br></pre></td></tr></table></figure>
+<p>path.join 必然是依赖于path模块加载完成才能使用的，对于服务器来说，因为所有的资源都存放在本地，所以各种模块各种模块加载进来之后再执行先关逻辑对于速度的要求来说并不会是那么明显问题。</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>一个文件就是一个模块，拥有单独的作用域；</li>
+<li>普通方式定义的变量、函数、对象都属于该模块内；</li>
+<li>通过<strong>require</strong>来加载模块；</li>
+<li>通过<strong>exports</strong>和<strong>modul.exports</strong>来暴露模块中的内容；</li>
+<li>模块加载的顺序，按照其在代码中出现的顺序。</li>
+<li>模块可以多次加载，<strong>但只会在第一次加载的时候运行一次</strong>，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果；模块的加载顺序，按照代码的出现顺序是同步加载的；</li>
+</ol>
+<p><strong>require</strong>（同步加载）基本功能：<strong>读取并执行</strong>一个JS文件，然后返回该模块的exports对象，如果没有发现指定模块会报错;</p>
+<p><strong>exports</strong>：node为每个模块提供一个exports变量，其指向module.exports，相当于在模块头部加了这句话：var exports = module.exports，在对外输出时，可以给exports对象添加方法（exports.xxx等同于module.exports.xxx），<strong>不能直接赋值</strong>（因为这样就切断了exports和module.exports的联系）;</p>
+<p><strong>module</strong>变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，<strong>其实是加载该模块的module.exports属性</strong>。</p>
+<ul>
+<li>module对象的属性：<ul>
+<li><strong>module.id</strong>模块的识别符，通常是带有绝对路径的模块文件名。</li>
+<li><strong>module.filename</strong> 模块的文件名，带有绝对路径。</li>
+<li><strong>module.loaded</strong> 返回一个布尔值，表示模块是否已经完成加载。</li>
+<li><strong>module.parent</strong> 返回一个对象，表示调用该模块的模块。</li>
+<li><strong>module.children</strong> 返回一个数组，表示该模块要用到的其他模块。</li>
+<li><strong>module.exports</strong> 表示模块对外输出的值。</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<ul>
+<li>注意在这种方式下module.exports被重新赋值了，所以之前使用exports导出的hello不再有效(模块头部<strong>var exports = module.exports</strong>)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exports.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'Hello world'</span>;<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<p>因此一旦<strong>module.exports被赋值了，表明这个模块具有单一出口了</strong></p>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><p><strong>Asynchronous Module Definition异步加载某模块的规范。</strong>试想如果在浏览器中（资源不再本地）采用commonjs这种完全依赖于先加载再试用方法，那么如果一个模块特别大，网速特别慢的情况下就会出现页面卡顿的情况。便有了异步加载模块的AMD规范。require.js便是基于此规范</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'module1'</span>,<span class="string">'module2'</span>....], callback);</span><br><span class="line">reqire([jquery],<span class="function"><span class="keyword">function</span>(<span class="params">jquery</span>)</span>&#123;</span><br><span class="line">   <span class="comment">//do something</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义模块</span></span><br><span class="line">define(id, [depends], callback); </span><br><span class="line"><span class="comment">//id是模块名,可选的依赖别的模块的数组，callback是用于return出一个给别的模块用的函数</span></span><br></pre></td></tr></table></figure>
+<p>熟悉的回调函数形式。</p>
+<h2 id="Node的模块实现"><a href="#Node的模块实现" class="headerlink" title="Node的模块实现"></a>Node的模块实现</h2><p>Node 对于模块的实现以commonjs为基础的同时也增加了许多自身的特性</p>
+<ul>
+<li><p><strong>Node模块的引入的三个步骤</strong></p>
+<ul>
+<li>路径分析</li>
+<li>文件定位<ul>
+<li>在<code>require</code>参数中如果不写后缀名，node会按照<code>.js</code>,<code>.node</code>,<code>.json</code>的顺序依次补足并try</li>
+<li>此过程会调用<code>fs</code>模块同步阻塞式的判断文件是否存在，因此非js文件最后加上后缀</li>
+</ul>
+</li>
+<li>编译执行<ul>
+<li><code>.js</code> 文件会被解析为 JavaScript 文本文件，<code>.json</code> 文件会被解析为 JSON 文本文件。 <code>.node</code> 文件会被解析为通过 dlopen 加载的编译后的插件模块.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Node的模块分类</strong></p>
+<ul>
+<li><strong>核心模块</strong> Node本身提供的模块，比如<code>path</code>,<code>buffer</code>,<code>http</code>等，在Node编译过程中就加载进内存，因此会省掉文件定位和编译执行两个文件加载步骤</li>
+<li><strong>文件模块</strong> 开发人员自己写的模块，会经历完整的模块引入步骤</li>
+</ul>
+</li>
+<li><p><strong>Node也会优先从缓存中加载引入过的文件模块</strong>，在Node中第一次加载某一个模块的时候，Node就会缓存下该模块，之后再加载模块就会直接从缓存中取了。这个“潜规则”核心模块和文件模块都会有。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'./test.js'</span>).message=<span class="string">'hello'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.cache);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>(<span class="string">'./test.js'</span>).message)<span class="comment">//hello</span></span><br></pre></td></tr></table></figure>
+<p>上述代码说明第二次加载依旧使用了第一次加载进来之后的模块并没有重新加载而是读取了缓存中的模块，因为重新加载的某块中并没有message。打印出来的<strong>require.cache</strong>包含了本模块的module信息和加载进来的模块信息。</p>
+<img src="/article/JS-module/require-cache.png">
+<p>那么如果你想要多次执行某一个模块，要么你手动像下面这样删除该模块的缓存记录之后再重新加载使用，要么应该在模块中暴露一个工厂函数，然后调用那个函数多次执行该模块，与vue-ssr的创建应用实例的工厂函数意思相近。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'./test.js'</span>).message=<span class="string">'hello'</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="string">'/absolute-path/test.js'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>(<span class="string">'./test.js'</span>).message)<span class="comment">//undifined</span></span><br></pre></td></tr></table></figure></p>
+<p>可见当删除了相关模块的缓存,再一次加载时则不再有message了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue-ssr工厂函数，目的是为每个请求创立一个新的应用实例</span></span><br><span class="line"><span class="keyword">const</span> Vue = <span class="built_in">require</span>(<span class="string">'vue'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">createApp</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      url: context.url</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`&lt;div&gt;访问的 URL 是： &#123;&#123; url &#125;&#125;&lt;/div&gt;`</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>模块包装器</strong></li>
+</ul>
+<p>Node在加载模块之后，执行之前则会使用函数包装器将模块代码包装，从而实现<strong>将顶层变量（<code>var</code>,<code>let</code>,<code>const</code>）作用域限制在模块范围内</strong>，<strong>提供每一个特定在该模块的顶层全局变量</strong><code>module</code>,<code>exports</code>,<code>__dirname</code>(所在文件夹的绝对路径),<code>__filename</code>（绝对路径加上文件名）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports, require, module, __filename, __dirname</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 模块的代码实际上在这里</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>关于模块的具体编译执行过程，这次就不深入讨论了，足够花心思在好好重新深入总结重写一篇了，顺便再次安利朴灵大大的《深入浅出nodejs》</p>
+<h2 id="ES6中模块的解决方案"><a href="#ES6中模块的解决方案" class="headerlink" title="ES6中模块的解决方案"></a>ES6中模块的解决方案</h2><p>终于，ES6在语言层面上提供了JS一直都没有的模块功能，使得在继Commonjs之于服务端，AMD之于浏览器之外提供了一个通用的解决方案。</p>
+<p><strong>1.设计思想</strong></p>
+<p>尽量静态化（<strong>静态加载</strong>），使得编译时就能确定模块间的依赖关系以及输入输出的变量。</p>
+<p><strong>2.关键语法</strong></p>
+<ul>
+<li><p><strong>export</strong></p>
+<ul>
+<li><p>export可以输出变量：<code>export var a = 1</code></p>
+</li>
+<li><p>输出函数：<code>export function sum(x, y) {
+return x + y;
+};</code></p>
+</li>
+<li>输出类：export class A{}</li>
+<li>结尾大括号写法：export {a , sum , A}</li>
+<li><strong>尤为注意的一点就是export所导出的接口一定要和模块内部的变量建立一一对应的关系</strong></li>
+</ul>
+</li>
+</ul>
+<p>对于一个模块来说，它就是一个默认使用了严格模式的文件（’use strict’）,而别的文件要想使用该模块，就必须要求该模块内有export主动导出的内容</p>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="number">1</span> <span class="comment">//直接导出一个数字是不可以的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a= <span class="number">2</span></span><br><span class="line"><span class="keyword">export</span> a <span class="comment">//间接导出数字也是不可以的！</span></span><br><span class="line"><span class="keyword">export</span> &#123;a&#125;<span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> sum <span class="comment">//错误</span></span><br><span class="line"><span class="keyword">export</span> &#123;sum&#125;<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+<p><strong>export个人最为重要的一点就是可以取到模块内的实时的值</strong></p>
+<p>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> foo = <span class="string">'bar'</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> foo = <span class="string">'baz'</span>, <span class="number">500</span>);</span><br></pre></td></tr></table></figure>
+<p>引用该模块的文件在定时器时间到的时候则会得到改变后的值</p>
+<ul>
+<li><strong>export default</strong></li>
+</ul>
+<p>实质： <strong>导出一个叫做default（默认的）变量，本质是将后面的值，赋给default变量</strong>，所以情况就和export 不同了</p>
+<p><strong>不同点:</strong></p>
+<ol>
+<li>export 导出的变量，在import的时候必须要知道变量名，否则无法加载，export default就允许随意取名直接加载，并且不用使用大括号；</li>
+<li>export default 后面不能跟变量声明语句</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一组</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">crc32</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">import</span> crc32 <span class="keyword">from</span> <span class="string">'crc32'</span>; <span class="comment">// 输入</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// 第二组</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">crc32</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">import</span> &#123;crc32&#125; <span class="keyword">from</span> <span class="string">'crc32'</span>; <span class="comment">// 输入</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = <span class="number">1</span>;<span class="comment">// 正确</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> a;<span class="comment">// 正确</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">var</span> a = <span class="number">1</span>;<span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
+<p>export default 每一个模块只允许有一个</p>
+<ul>
+<li><strong>import</strong></li>
+</ul>
+<p>与导出export对应，引用则是import</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;a,b&#125;</span><br><span class="line">	||</span><br><span class="line">	\/</span><br><span class="line"><span class="keyword">import</span> &#123; a <span class="keyword">as</span> A ,b <span class="keyword">as</span> B&#125; <span class="keyword">from</span> <span class="string">'./test.js'</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>主要特点：</strong></p>
+<p>使用import加载具有提升的效果，即会提到文件头部进行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo();</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br></pre></td></tr></table></figure>
+<p>该代码会正常执行。</p>
+<p>*加载默认加载全部导出的变量</p>
+<p><code>import * as A from &#39;./a.js&#39;</code></p>
+<p><strong>import 加载进来的变量是不允许改变的。</strong></p>
+<h3 id="浏览器对ES6模块的加载"><a href="#浏览器对ES6模块的加载" class="headerlink" title="浏览器对ES6模块的加载"></a>浏览器对ES6模块的加载</h3><p><strong>type=’module’,此时浏览器就会知道这是ES6模块，同时会自动给他加上前文提到的defer属性，即等到所有的渲染操作都执行完成之后，才会执行该模块</strong></p>
+<p><code>&lt;script type=&quot;module&quot; src=&quot;./test.js&quot;&gt;&lt;/script&gt;</code></p>
+<h3 id="Node-对ES6模块的加载"><a href="#Node-对ES6模块的加载" class="headerlink" title="Node 对ES6模块的加载"></a>Node 对ES6模块的加载</h3><p>由于Node有自己的模块加载机制，所以在Node8.5以上版本将两种方式的加载分开来处理，对于加载ES6的模块，node要求其后缀名得是<code>.mjs</code>,然后还得加上<code>--experimental-modules</code>参数，然后两种机制还不能混用。确实还是很麻烦的，所以现在Node端想用import主流还是用babel转义。</p>
+<h2 id="六-对比ES6-module和Node的commonjs"><a href="#六-对比ES6-module和Node的commonjs" class="headerlink" title="六.对比ES6 module和Node的commonjs"></a>六.对比ES6 module和Node的commonjs</h2><h3 id="差异："><a href="#差异：" class="headerlink" title="差异："></a>差异：</h3><ul>
+<li><strong>静态加载VS运行时加载</strong></li>
+</ul>
+<p>首先看下面一段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &gt; <span class="number">2</span>) &#123;</span><br><span class="line">  <span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'./a.js'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">import</span> B <span class="keyword">from</span> <span class="string">'./b.js'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码会报错，因为JS引擎在处理import是在编译时期，此时不会去执行条件语句，因此这段代码会出现句法错误，相反，如果换成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &gt; <span class="number">2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> A =<span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> B =<span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>commonjs是在运行时加载模块，因此上面代码就会成功运行</p>
+<p>由于动态加载功能的要求，才会有了import()函数的提案，这里就不过多赘述。</p>
+<ul>
+<li>值的引用VS值的拷贝</li>
+</ul>
+<p><strong>commonjs模块在加载之后会把原始类型的值缓存，之后该模块的内部变化则不会再影响到其输出的值</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test.js</span></span><br><span class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  counter: counter,</span><br><span class="line">  incCounter: incCounter,</span><br><span class="line">&#125;;</span><br><span class="line">==================================</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">var</span> test = <span class="built_in">require</span>(<span class="string">'./test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.counter);  <span class="comment">// 3</span></span><br><span class="line">test.incCounter();</span><br><span class="line"><span class="built_in">console</span>.log(test.counter); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>ES6的模块机制,在引擎静态分析阶段会把import当成是一种<strong>只读引用（地址是只读的const，因此不可以在引用该模块的文件里给他重新赋值）</strong>，等到代码实际运行时，才会根据引用去取值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> counter = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  counter++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; counter, incCounter &#125; <span class="keyword">from</span> <span class="string">'./test'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(counter); <span class="comment">// 3</span></span><br><span class="line">incCounter();</span><br><span class="line"><span class="built_in">console</span>.log(counter); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h3 id="循环加载问题"><a href="#循环加载问题" class="headerlink" title="循环加载问题"></a>循环加载问题</h3><p>循环加载指的是，a文件依赖于b文件，而b文件又依赖于a文件</p>
+<ul>
+<li><strong>commonjs的循环加载问题</strong></li>
+</ul>
+<p>commonjs是在加载时执行的，他在require的时候就会全部跑一遍，因此他在遇到循环加载的情况就会只输出已经执行的部分，而之后的部分则不会输出，下面是一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//parent文件</span></span><br><span class="line">exports.flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> children = <span class="built_in">require</span>(<span class="string">'./children'</span>)<span class="comment">//停下来，加载chilren</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`parent文件中chilren的flag =<span class="subst">$&#123;children.flag&#125;</span>`</span>);</span><br><span class="line">exports.flag = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`parent文件执行完毕了`</span>);</span><br><span class="line">=========================================================</span><br><span class="line"><span class="comment">//test2文件</span></span><br><span class="line">exports.flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> parent = <span class="built_in">require</span>(<span class="string">'./parent'</span>)<span class="comment">//停下来，加载parent，此时parent只执行到了第一行，导出结果flag ==1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`children文件中parent的flag =<span class="subst">$&#123;parent.flag&#125;</span>`</span>);</span><br><span class="line">exports.flag = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`children文件执行完毕了`</span>);</span><br></pre></td></tr></table></figure>
+<p><code>node parent</code>之后运行结果为</p>
+<img src="/article/JS-module/循环加载.png">
+<p>运行parent之后会在第一行导出flag=1，然后去<code>ruquire</code>children文件，此时parent进行等待，等待children文件执行结束，children开始执行到第二行的时候出现“循环加载”parent文件，此时系统自动去找parent文件的exports属性，而parent只执行了一行，但是好在它有exports了flag，所以children文件加再进来了那个flag并继续执行，第三行不会报错，最后在第四行children导出了flag=2，此时parent再接着执行到结束。</p>
+<ul>
+<li><strong>ES6中的循环加载问题</strong></li>
+</ul>
+<p>ES6和commonjs本质上不同！因为ES6是<strong>引用取值</strong>，即动态引用</p>
+<p>引用阮一峰老师<a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">ES6标准入门</a>的例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.mjs</span></span><br><span class="line"><span class="keyword">import</span> &#123;bar&#125; <span class="keyword">from</span> <span class="string">'./b'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a.mjs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(bar);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> foo = <span class="string">'foo'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// b.mjs</span></span><br><span class="line"><span class="keyword">import</span> &#123;foo&#125; <span class="keyword">from</span> <span class="string">'./a'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.mjs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> bar = <span class="string">'bar'</span>;</span><br></pre></td></tr></table></figure>
+<p>执行后的结果：<br><img src="/article/JS-module/ES6循环加载出错.png"></p>
+<p>执行的过程是当a文件防线import了b文件之后就会去执行b文件，到了b文件这边看到了他又引用了a文件，并不会又去执行a文件发生“张郎送李郎”的故事，而是倔强得认为foo这个接口已经存在了，于是就继续执行下去，直到在要引用<code>foo</code>的时候发现<code>foo</code>还没有定义，因为let定义变量会出现”暂时性死区”，不可以还没定义就使用，其实如果改成var声明，有个变量提升作用就不会报错了。改成var声明foo<code>export let foo = &#39;foo&#39;;</code></p>
+<img src="/article/JS-module/ES6循环加载换成var.png">
+<p>虽然打印的foo是undifined但是并没有影响程序执行，但最好的做法是，改成同样有提升作用的function来声明。最后去执行函数来获得值，最后得到了希望的结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.mjs</span></span><br><span class="line"><span class="keyword">import</span> &#123;bar&#125; <span class="keyword">from</span> <span class="string">'./b'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a.mjs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(bar());</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">'foo'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// b.mjs</span></span><br><span class="line"><span class="keyword">import</span> &#123;foo&#125; <span class="keyword">from</span> <span class="string">'./a'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.mjs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(foo());</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">'bar'</span> &#125;;</span><br></pre></td></tr></table></figure>
+<img src="/article/JS-module/ES6循环加载正确.png">
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>其实关于模块还有很多东西还没有梳理总结到，比如node模块的加载过程的细节，和编译过程，再比如如何自己写一个npm模块发布等等都是很值得去梳理总结的，这一次就先到这吧，总之，第一次在自己的博客站正儿八经的写这么长的技术总结博客，组织内容上感觉比较凌乱，还有很多的不足。希望自己以后多多总结提高吧。最后当然还是要感谢开源，感谢提供了那么多优秀资料的前辈们。</p>
+<blockquote><p>参考文章：<br><a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">ES6标准入门–阮一峰</a><br><a href="https://nodejs.org/dist/latest-v8.x/docs/api/" target="_blank" rel="noopener">Nodejs v8.9.4 官方文档</a><br>《深入浅出Nodejs》—朴灵<br><a href="http://javascript.ruanyifeng.com/nodejs/module.html" target="_blank" rel="noopener">Commonjs规范</a></p>
+</blockquote>
+
+                <blockquote>
+                    本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
+                    转载请注明来源：<a href="https://isliulei.com/article/JS-module/" rel="noopener" title="https://isliulei.com/article/JS-module/">https://isliulei.com/article/JS-module/</a>
+                    </blockquote>
+                <hr>
+
+               
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/About-My-Blog-Site/" data-toggle="tooltip" data-placement="top" title="About My Blog Site">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+    <!-- github isuue comment container-->
+    
+        <hr>
+        <div id="git-container"></div>
+    
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                        
+                          <a class="tag" href="/tags/#Node" title="Node">Node</a>
+                        
+                          <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+                        
+                          <a class="tag" href="/tags/#Commonjs" title="Commonjs">Commonjs</a>
+                        
+                          <a class="tag" href="/tags/#模块机制" title="模块机制">模块机制</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="https://zoumiaojiang.com" target="_blank">ZouMiaojiang Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+<!-- gitcoment JS代码 -->
+
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    var gitment = new Gitment({
+      id: 'https://isliulei.com/article/JS-module/', // 可选。默认为 location.href
+      owner: 'ray1121',
+      repo: 'ray1121.github.io',
+      oauth: {
+        client_id: '0dec358cb186e06c3ed5',
+        client_secret: '2e4b2be32341a8a745d1841f0b1fcb8fe0da42c5',
+      },
+    })
+    gitment.render('git-container')
+    </script>
+    <!-- gitcoment 代码结束 -->
+    
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2866571714">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ray1121">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ray 2018 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://isliulei.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+    <a id="rocket" href="#top" class=""></a>
+<!-- Image to hack wechat -->
+<img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+</body>
+
+</html>
