@@ -277,7 +277,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exports.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'Hello world'</span>;<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
 <p>因此一旦<strong>module.exports被赋值了，表明这个模块具有单一出口了</strong></p>
-<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><p><strong>Asynchronous Module Definition异步加载某模块的规范。</strong>试想如果在浏览器中（资源不再本地）采用commonjs这种完全依赖于先加载再试用方法，那么如果一个模块特别大，网速特别慢的情况下就会出现页面卡顿的情况。便有了异步加载模块的AMD规范。require.js便是基于此规范</p>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><p><strong>Asynchronous Module Definition异步加载某模块的规范。</strong>试想如果在浏览器中（资源不再本地）采用commonjs这种完全依赖于先加载再试用方法，那么如果一个模块特别大，网速特别慢的情况下就会出现页面卡顿的情况。便有了异步加载模块的AMD规范。(requirejs)[<a href="http://requirejs.org]便是基于此规范.此外对比commonjs，requirejs还具有不转换代码的情况下直接在浏览器中运行，可并行加载多个依赖等优点。" target="_blank" rel="noopener">http://requirejs.org]便是基于此规范.此外对比commonjs，requirejs还具有不转换代码的情况下直接在浏览器中运行，可并行加载多个依赖等优点。</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'module1'</span>,<span class="string">'module2'</span>....], callback);</span><br><span class="line">reqire([jquery],<span class="function"><span class="keyword">function</span>(<span class="params">jquery</span>)</span>&#123;</span><br><span class="line">   <span class="comment">//do something</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义模块</span></span><br><span class="line">define(id, [depends], callback); </span><br><span class="line"><span class="comment">//id是模块名,可选的依赖别的模块的数组，callback是用于return出一个给别的模块用的函数</span></span><br></pre></td></tr></table></figure>
 <p>熟悉的回调函数形式。</p>
 <h2 id="Node的模块实现"><a href="#Node的模块实现" class="headerlink" title="Node的模块实现"></a>Node的模块实现</h2><p>Node 对于模块的实现以commonjs为基础的同时也增加了许多自身的特性</p>
@@ -418,6 +418,10 @@ return x + y;
 
                
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/ES7-ES7next/" data-toggle="tooltip" data-placement="top" title="为ES7&ES7+新特性加一个Note">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">

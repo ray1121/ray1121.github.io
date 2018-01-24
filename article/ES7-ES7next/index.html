@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="AWIlOY2Rc6" />
+    <meta name="baidu-site-verification" content="NoiX8Y5AVD" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hi~这是刘雷，USTC软件工程研二学生党一枚，JS，Node，python爱好者，web开发小学生，热爱科比热爱詹姆斯">
+    <meta name="keyword"  content="javascript,Node,python,web,USTC">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          为ES7&amp;ES7+新特性加一个Note - 刘雷的博客 | Ray&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://isliulei.com/article/ES7-ES7next/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/rocket.css">
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+    <!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/default_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#-JavaScript -ES7" title="-JavaScript -ES7">-JavaScript -ES7</a>
+                            
+                        </div>
+                        <h1>为ES7&amp;ES7+新特性加一个Note</h1>
+                        <h2 class="subheading">ES语法小特性小记</h2>
+                        <span class="meta">
+                            Posted by Ray on
+                            2018-01-24
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Ray</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/archives/">archives</a>
+                        </li>
+                        
+                    
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6较ES5来说可能是一个较大的版本变动，增添了很多特性或者语法糖，使得整个JS语言的使用体验又向前迈了一大步，但是ES6（ECMAScript2015）之后，每一年都会有新的语言强化版本更新出现，所谓的ES7等，这些变动都没有再像ES6那么多。加之很多新特性在正式发布之前就一定会至少有两个成熟的实现支持，使得在ES6之后，新增特性版本上就变得很模糊了，尤其是在Node环境中，有些时候对于一些小的地方的新特性你都已经写了很多次了都有可能不知道用的到底是哪个版本了。</p>
+<p>我本地和开发环境都已经迁移和更新到了Node的最新LTS版本8.9.4对新版本的语法支持都做得已经很好了，以下特性虽然归在ES6之后的版本，但是Node已经有了支持。而对于语言的新语法特性来说，个人认为最好的方式就是理解语言重要部分之外多关注语言，然后多积累吧。所以我把这篇文章当做是一个对ES6之后的语法的一些“小地方”的一个笔记，记录积累那些小的特性或者语法，当然一些重要的地方比如说像<strong>共享内存</strong>和<strong>原子操作</strong>等这种，感觉内容很多的块就不会在这里记了。</p>
+<p>之前刚学PY的时候觉得python中的装饰器这种这么骚气的语法糖为啥JS不弄一个，结果一查JS的Decorator（装饰器）草案已经提出了。</p>
+<blockquote>
+<p>不管是哪一款优秀的开源框架还是哪一门优秀并且开发者使用的多的语言，往前发展都会对其他优秀的框架语言进行借鉴，这种看似竞争实则携手发展的面貌对于开发者来说本身就是一份回馈也是一份督促。</p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="表示乘方"><a href="#表示乘方" class="headerlink" title="**表示乘方"></a><code>**</code>表示乘方</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>**<span class="number">3</span>)<span class="comment">//输出8</span></span><br></pre></td></tr></table></figure>
+<h3 id="Trailing-commas（函数参数的尾逗号）"><a href="#Trailing-commas（函数参数的尾逗号）" class="headerlink" title="Trailing commas（函数参数的尾逗号）"></a>Trailing commas（函数参数的尾逗号）</h3><p>之前数组的最后一个元素和对象的最后一个属性后面都可以加逗号，现在<strong>函数的最后一个参数后面可以加逗号了</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">	a,</span></span></span><br><span class="line"><span class="function"><span class="params">	b,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组新增了includes-方法"><a href="#数组新增了includes-方法" class="headerlink" title="数组新增了includes()方法"></a>数组新增了<code>includes()</code>方法</h3><p>在之前判定数组中是否包含某个元素的方式是indexOf,返回值如果是-1则表示没有包含，现在<strong>用<code>[].includes(ele)</code>返回值为Bollean可以判断是否包含了。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.includes(<span class="number">1</span>)<span class="comment">//返回值为true</span></span><br><span class="line">a.includes(<span class="number">4</span>)<span class="comment">//返回值为false</span></span><br></pre></td></tr></table></figure>
+<h3 id="str-padStart-和str-padEnd"><a href="#str-padStart-和str-padEnd" class="headerlink" title="str.padStart()和str.padEnd()"></a><code>str.padStart()</code>和<code>str.padEnd()</code></h3><p>字符串新增了两个方法，参数是number，表示当<strong>字符串的长度达不到方法的参数的长度时在末尾或者开头用空格补齐长度</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="string">'abc'</span></span><br><span class="line">b.padStart(<span class="number">5</span>)<span class="comment">//返回值为'  abc'</span></span><br><span class="line">b.padEnd(<span class="number">5</span>)<span class="comment">//返回值为'abc  '</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象的Rest-amp-Spread"><a href="#对象的Rest-amp-Spread" class="headerlink" title="对象的Rest&amp;Spread"></a>对象的Rest&amp;Spread</h3><p>对于数组的REST和Spread已经是经常用的了，对于对象的属性的Rest和Spread与之类似</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;x,y,...z&#125;=&#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>,<span class="attr">z</span>:<span class="number">3</span>,<span class="attr">d</span>:<span class="number">4</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x)<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(z)<span class="comment">//输出&#123; z: 3, d: 4 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> n = &#123;x,y,...z&#125;</span><br><span class="line"><span class="built_in">console</span>.log(n)<span class="comment">//输出&#123;x:1,y:2,z:3,d:4&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Object-values-obj-和Object-entries-obj"><a href="#Object-values-obj-和Object-entries-obj" class="headerlink" title="Object.values(obj)和Object.entries(obj)"></a><code>Object.values(obj)</code>和<code>Object.entries(obj)</code></h3><p>在ES5引入了遍历对象key的方法<code>Object.keys(obj)</code>之后再ES8新增了新的对应遍历对象值的方法。三者的返回值都是数组。</p>
+<p><code>Object.values(obj)</code>返回的是对应的value数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.values(obj)<span class="comment">//输出[ 1, 2 ]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> <span class="built_in">Object</span>.values(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// 1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Object.entries(obj)</code>返回的是有每一对键值对数组组成的数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.entries(obj)<span class="comment">//输出[ [ 'a', 1 ], [ 'b', 2 ] ]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log([key, value]); <span class="comment">// ['a', 1], ['b', 2]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Object-getOwnPropertyDescriptors-obj-获取属性信息"><a href="#Object-getOwnPropertyDescriptors-obj-获取属性信息" class="headerlink" title="Object.getOwnPropertyDescriptors(obj)获取属性信息"></a><code>Object.getOwnPropertyDescriptors(obj)</code>获取属性信息</h3><p>由之前的<code>Object.getOwnPropertyDescriptor(obj,&#39;propName&#39;)</code>而来返回的是对象所有属性的描述信息,返回值是一个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">1</span>,<span class="attr">z</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">x</span>: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  y: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  z: &#123; <span class="attr">value</span>: <span class="number">2</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125; &#125;</span><br><span class="line">====================================================  </span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a,<span class="string">'x'</span>)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Async-amp-Await"><a href="#Async-amp-Await" class="headerlink" title="Async&amp;Await"></a>Async&amp;Await</h3><p>异步的“终极解决方案”，已经是很常用的东西了，在这里就不过多介绍了。</p>
+<p>由于Node的主场景（网络IO和文件IO）和JS的语言特性，异步的处理一直都是一个很大的一块，所以关于异步的总结我会尽快梳理成一篇完整的博客。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续会有更新和补充。</p>
+<p>关于学习，语法这种事情最好的方式就是自己多有意识的多用几次，这样遇到符合使用场景的时候就会可以想到，哪怕细节记得不清了也可以很快解决。由于平时主要在Node端写代码所以测试语法最快的方式就是在node REPL中敲一遍，加深了印象也得到了结果，当然有一个方便查看的表也是很重要的<a href="http://kangax.github.io/compat-table/es2016plus/" target="_blank" rel="noopener">ECMAScript compatibility table</a></p>
+
+                <blockquote>
+                    本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
+                    转载请注明来源：<a href="https://isliulei.com/article/ES7-ES7next/" rel="noopener" title="https://isliulei.com/article/ES7-ES7next/">https://isliulei.com/article/ES7-ES7next/</a>
+                    </blockquote>
+                <hr>
+
+               
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/JS-module/" data-toggle="tooltip" data-placement="top" title="JS的模块机制梳理和总结">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+    <!-- github isuue comment container-->
+    
+        <hr>
+        <div id="git-container"></div>
+    
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#-JavaScript -ES7" title="-JavaScript -ES7">-JavaScript -ES7</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="https://zoumiaojiang.com" target="_blank">ZouMiaojiang Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+<!-- gitcoment JS代码 -->
+
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    var gitment = new Gitment({
+      id: 'https://isliulei.com/article/ES7-ES7next/', // 可选。默认为 location.href
+      owner: 'ray1121',
+      repo: 'ray1121.github.io',
+      oauth: {
+        client_id: '0dec358cb186e06c3ed5',
+        client_secret: '2e4b2be32341a8a745d1841f0b1fcb8fe0da42c5',
+      },
+    })
+    gitment.render('git-container')
+    </script>
+    <!-- gitcoment 代码结束 -->
+    
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2866571714">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ray1121">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ray 2018 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://isliulei.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- 百度连接连接提交 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+    <a id="rocket" href="#top" class=""></a>
+<!-- Image to hack wechat -->
+<img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+</body>
+
+</html>

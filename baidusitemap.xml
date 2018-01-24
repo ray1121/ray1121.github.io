@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>https://isliulei.com/article/ES7-ES7next/</loc>
+    <lastmod>2018-01-24T08:43:37.264Z</lastmod>
+    <data>
+        <display>
+        <title>为ES7&ES7+新特性加一个Note</title>
+        <pubTime>2018-01-24T07:48:36.000Z</pubTime>
+        
+        <tag>-JavaScript -ES7</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://isliulei.com/article/JS-module/</loc>
-    <lastmod>2018-01-17T08:11:36.000Z</lastmod>
+    <lastmod>2018-01-19T03:03:51.855Z</lastmod>
     <data>
         <display>
         <title>JS的模块机制梳理和总结</title>
