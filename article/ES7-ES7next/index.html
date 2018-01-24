@@ -130,14 +130,14 @@
                         
                         
                         <li>
-                            <a href="/archives/">archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
                         
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archives/">archives</a>
                         </li>
                         
                     
@@ -243,9 +243,10 @@
 </li>
 <li><p>Enumerable控制的是属性是否会出现在对象的属性枚举中，比如for..in 循环（<strong>但是可以通过 in 操作符来判断是否存在</strong>），<strong>“可枚举”相当于“可以出现在对象的属性遍历中”</strong>判断是否可枚举myObject.propertyIsEnumerable( “a” );</p>
 </li>
-<li><p><strong>关于in 和 obj.hasOwnProperty()</strong></p>
-</li>
 </ol>
+<ul>
+<li><strong>关于in 和 obj.hasOwnProperty()</strong></li>
+</ul>
 <p>in 操作符会检查属性是否在对象及其 Prototype 原型链中。相比之下， hasOwnProperty(..) 只会检查属性是否在 myObject 对象中，不会检查 Prototype 链。</p>
 <h3 id="Async-amp-Await"><a href="#Async-amp-Await" class="headerlink" title="Async&amp;Await"></a>Async&amp;Await</h3><p>异步的“终极解决方案”，已经是很常用的东西了，在这里就不过多介绍了。</p>
 <p>由于Node的主场景（网络IO和文件IO）和JS的语言特性，异步的处理一直都是一个很大的一块，所以关于异步的总结我会尽快梳理成一篇完整的博客。</p>
