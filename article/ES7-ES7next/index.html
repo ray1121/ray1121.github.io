@@ -130,14 +130,14 @@
                         
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archives/">archives</a>
                         </li>
                         
                     
                         
                         
                         <li>
-                            <a href="/archives/">archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -226,6 +226,27 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.entries(obj)<span class="comment">//输出[ [ 'a', 1 ], [ 'b', 2 ] ]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log([key, value]); <span class="comment">// ['a', 1], ['b', 2]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Object-getOwnPropertyDescriptors-obj-获取属性信息"><a href="#Object-getOwnPropertyDescriptors-obj-获取属性信息" class="headerlink" title="Object.getOwnPropertyDescriptors(obj)获取属性信息"></a><code>Object.getOwnPropertyDescriptors(obj)</code>获取属性信息</h3><p>由之前的<code>Object.getOwnPropertyDescriptor(obj,&#39;propName&#39;)</code>而来返回的是对象所有属性的描述信息,返回值是一个对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">1</span>,<span class="attr">z</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">x</span>: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  y: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  z: &#123; <span class="attr">value</span>: <span class="number">2</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125; &#125;</span><br><span class="line">====================================================  </span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a,<span class="string">'x'</span>)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>补充：</strong><br>ES5开始对象的属性都具备了属性描述符</p>
+<p><code>Object.defineProperty</code>定义对象属性</p>
+<pre><code class="js"><span class="built_in">Object</span>.defineProperty( myObject, <span class="string">"a"</span>, {
+    value: <span class="number">2</span>,
+        writable: <span class="literal">true</span>, 
+        configurable: <span class="literal">true</span>, 
+        enumerable: <span class="literal">true</span>
+     } );
+</code></pre>
+<p>说明：</p>
+<ol>
+<li><p>writable:是否可写；即值是不是能被set变，严格模式下修改writable：false的属性值是会抛出错误</p>
+</li>
+<li><p>Configurable是否可用Object.defineProperty来配置，改为false之后则不管是不是严格模式下在想来修改属性描述都会抛出错误，并且被修改为不可配置的这个属性不能用delete myObject.a 这种方式删掉</p>
+</li>
+<li><p>Enumerable控制的是属性是否会出现在对象的属性枚举中，比如for..in 循环（<strong>但是可以通过 in 操作符来判断是否存在</strong>），<strong>“可枚举”相当于“可以出现在对象的属性遍历中”</strong>判断是否可枚举myObject.propertyIsEnumerable( “a” );</p>
+</li>
+<li><p><strong>关于in 和 obj.hasOwnProperty()</strong></p>
+</li>
+</ol>
+<p>in 操作符会检查属性是否在对象及其 Prototype 原型链中。相比之下， hasOwnProperty(..) 只会检查属性是否在 myObject 对象中，不会检查 Prototype 链。</p>
 <h3 id="Async-amp-Await"><a href="#Async-amp-Await" class="headerlink" title="Async&amp;Await"></a>Async&amp;Await</h3><p>异步的“终极解决方案”，已经是很常用的东西了，在这里就不过多介绍了。</p>
 <p>由于Node的主场景（网络IO和文件IO）和JS的语言特性，异步的处理一直都是一个很大的一块，所以关于异步的总结我会尽快梳理成一篇完整的博客。</p>
 <h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续会有更新和补充。</p>
