@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://isliulei.com/article/ES7-ES7next/</loc>
-    <lastmod>2018-01-24T09:08:58.980Z</lastmod>
+    <lastmod>2018-01-25T05:53:09.139Z</lastmod>
     <data>
         <display>
         <title>为ES7&ES7+新特性开一个Note</title>
@@ -14,6 +14,33 @@
         <tag>JavaScript</tag>
          
         <tag>ES7</tag>
+         
+        <tag>编程语言类</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/JS-module/</loc>
+    <lastmod>2018-01-25T05:52:14.490Z</lastmod>
+    <data>
+        <display>
+        <title>JS的模块机制梳理和总结</title>
+        <pubTime>2018-01-16T08:08:20.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>Node</tag>
+         
+        <tag>ES6</tag>
+         
+        <tag>Commonjs</tag>
+         
+        <tag>模块机制</tag>
          
          
            
@@ -35,31 +62,6 @@
         <tag>Hexo</tag>
          
         <tag>GitPage</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/JS-module/</loc>
-    <lastmod>2018-01-19T03:03:51.855Z</lastmod>
-    <data>
-        <display>
-        <title>JS的模块机制梳理和总结</title>
-        <pubTime>2018-01-16T08:08:20.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-        <tag>Node</tag>
-         
-        <tag>ES6</tag>
-         
-        <tag>Commonjs</tag>
-         
-        <tag>模块机制</tag>
          
          
            
