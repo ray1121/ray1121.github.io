@@ -14,11 +14,11 @@
 
     <title>
         
-          About My Blog Site - 刘雷的博客 | Ray&#39;s Blog
+          文件（夹）监听---Node原生 VS chokidar - 刘雷的博客 | Ray&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/About-My-Blog-Site/">
+    <link rel="canonical" href="https://isliulei.com/article/Node-WatchFile/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -78,18 +78,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                            
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                            
-                              <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
+                              <a class="tag" href="/tags/#Node" title="Node">Node</a>
                             
                         </div>
-                        <h1>About My Blog Site</h1>
-                        <h2 class="subheading">Just a beginning...</h2>
+                        <h1>文件（夹）监听---Node原生 VS chokidar</h1>
+                        <h2 class="subheading">Node原生 VS chokidar</h2>
                         <span class="meta">
                             Posted by Ray on
-                            2018-01-10
+                            2018-01-25
                         </span>
                     </div>
                 
@@ -206,38 +202,58 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2><p>总之，我的博客网站算是差不多搭完了，如果有其他的优化也是等我先多记点东西之后了。</p>
-<p>最开始的时候想基于Node和Nuxt慢慢悠悠业余自己撘一个博客系统的，外带注册用户也能使用的样子:）然后。。在我的腾讯云学生1元云服务器上把它巧妙上线开放一把（mdzz），为此我甚至把博客系统的主题都想好了，就叫“Know Me || Let World Know You”，我甚至天真的觉得半年前liaojiewo.com这个域名被我缘分一样幸运拿下了都是天意:)….</p>
-<p>然而不善于折腾样式又穷的我最终还是走远了，记得研一的时候用腾讯一元学生服务器做实验的时候曾经被感动到，现在依旧每月定时交上一块续着那股神韵，缘起于曾经听到过别人对我说的一句<strong>“你背书包的样子好像一个学生…”</strong>。那时，我TM大二。</p>
-<p>我其实是习惯在纸上记东西的，写写画画之后我会觉得通透，一方面是现在在实习的时候发现确实还是在某个平台记录下来便于别人的指正和交流，另一方面现在觉得要是自己弄个站还是能有一种神秘的力量能督促一下我多总结知识的习惯。所以，便在2018伊始急迫的有了这个blog site。</p>
-<h2 id="关于这个site"><a href="#关于这个site" class="headerlink" title="关于这个site"></a>关于这个site</h2><p>我其实之前对怎么快速的撘出一个自己的博客网站是没什么去研究过的，只知道一个基于PHP的<a href="https://cn.wordpress.org" target="_blank" rel="noopener">Wordpress</a>还是很方便快捷，然而没怎么接触过PHP的我并没有去操作一下。每天早上都会去<a href="https://juejin.im/timeline" target="_blank" rel="noopener">掘金</a>上把新的技术文章都看一遍，上个星期从一个讲nuxt架构的一篇文章链到了这个我在About里shout out to的博主<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈，看了他写的很多文章写的都很好，其中就有一篇关于搭建博客网站的文章， 所用到的框架<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>是一个基于Node的快速搭建Blog的框架，看了一下官方文档确实配置和解耦做的相当好，尤其是主题中有我觉得非常到位的风格的出自<a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a>，而主题又是基于ejs这种Node的“官配”，甚至通过这个框架生成静态页面之后托管到<a href="https://pages.github.com" target="_blank" rel="noopener">GitPage</a>连服务器钱也巧妙的省了，甚至免去了服务器备案等一切烦心又耗时的事情，对于我来说实在是没有再不弄一个的理由了。所以在此还是要再一次对优秀的开源框架和Git这种优秀平台的感谢。</p>
-<p>所以这个站的具体实现细节，请移步前文提到的<a href="https://zoumiaojiang.com/article/how-to-build-a-blog/" target="_blank" rel="noopener">快速低成本的搭建一个马马虎虎的博客</a>，这位博主确实已经写得足够到位了，细致到你基本上可以画上一个周末折腾即可的程度。所以我在此也只会对于<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈没有提到的评论系统的使用做一些简单的补充，今后如果再折腾其他的东西也会在此做相应补充。</p>
-<p>关于评论系统，看了Hexo官网上有很多的Theme还是使用着<a href="https://baike.baidu.com/item/多说/5365567?fr=aladdin" target="_blank" rel="noopener">Duoshuo</a>（去年停服了）或者<a href="http://www.disqus.com" target="_blank" rel="noopener">Disqus</a>(你可能打不开，因为被墙了)，也看了几个其他的托管的评论服务，其中觉得<a href="http://www.laibili.com.cn" target="_blank" rel="noopener">来必力</a>还算不错，然而我最后选择的还是使用基于github issues的<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a>:),源自于考虑到我估计只会在这里写一些技术相关的文章，所以用一个只有github用户才能使用的评论系统也显得没有什么毛病，当然你自己也得有一个<a href="https://github.com" target="_blank" rel="noopener">github</a>账号。</p>
-<p>首先你应该在<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">这里</a>注册一个OAuth Application<br><img src="/article/About-My-Blog-Site/gitment.png" title="OAuth Application"></p>
-<p>然后你就会得到 client ID 和一个 client secret 然后就去你的theme布局里面想加入评论的page或者post的layout中嵌入这一段代码了，下面的id=container的div放到布局合适的位置。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">var gitment = new Gitment(&#123;</span></span><br><span class="line"><span class="undefined">  id: '页面 ID', // 可选。默认为 location.href</span></span><br><span class="line"><span class="undefined">  owner: '你的 GitHubID',</span></span><br><span class="line"><span class="undefined">  repo: '存储评论的repo',</span></span><br><span class="line"><span class="undefined">  oauth: &#123;</span></span><br><span class="line"><span class="undefined">    client_id: 'Your client ID',</span></span><br><span class="line"><span class="undefined">    client_secret: 'Your client secret',</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined">gitment.render('container')</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果你在OAuth Application中填写的回调地址以及其他的信息都正确的话,你应该会在页面看到如下相关评论的功能了</p>
-<img src="/article/About-My-Blog-Site/gitment-UI.png">
-<p>其中在gitment项目地址中也说明了，现在还是只能在发布一个新的页面之后你需要在你新的页面里面登录，并且在上图的<code>no Comment Yet</code>位置处会有一个初始化按钮<code>Initialize Your Comments</code>你必须要先登录然后点击初始化按钮之后，目的是在你的仓库里创建一个相关的issure，做完了这一步初始化之后，你的这个page或者是新的一篇文章别人就可以正常评论了。</p>
-<p>之后对站点的改进与实践也会继续更新。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>一直最为中意的莫过于黑，审美品位比较简单也比较复杂，所以网站的主题以黑底白字为主，<strong>Know Me</strong>的遗念也留下来了到了首页上。</p>
-<p>我主要的方向可能是在Web这一块，所以以后的博客可能也会偏JS和Node相关的内容比较多，当然，如果闲下来也想能总结总结python和redis，长时间不用感觉有点生疏,但毕竟是当时接触时感觉很喜欢的语言和数据库。当然，水平有限，能被有缘人看到和指正也是一件非常美好的事情。</p>
-<p>是很希望在2018年能够趁着还没有毕业多多抽出时间系统的总结一下知识点，比起纸上记笔记，一篇博客可能最起码要比挑重点的写写画画应该会要完整的很多，实习的这段时间收获很多，也希望今年下半年论文相关事情能顺利。所以矫情一点的话就是加油吧。</p>
-<img src="/article/About-My-Blog-Site/kobe-back.jpg">
+                <h2 id="Node原生"><a href="#Node原生" class="headerlink" title="Node原生"></a>Node原生</h2><p>首先当然是先介绍Node对文件（夹）监听的原生方法，下面是我的测试demo的文件结构</p>
+<img src="/article/Node-WatchFile/testFolder.png">
+<p>Node对文件或者文件夹的监听，通过原生模块<code>fs</code>提供的<code>watch()</code>和 <code>watchFile()</code>方法，先来看看他们的用法。</p>
+<h3 id="fs-watch-filename-options-listener"><a href="#fs-watch-filename-options-listener" class="headerlink" title="fs.watch(filename[, options][, listener])"></a><code>fs.watch(filename[, options][, listener])</code></h3><p>其中filename可以是一个文件夹也可以可以使一个文件，</p>
+<p>对于第二个options参数，他如果是一个字符串，那么就应该指定用于传给监听器的文件名的字符编码(encoding)，默认是”utf-8”</p>
+<p>如果要定义其余的选项，就要把它定义成一个<code>object</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.watch(<span class="string">'./testFolder'</span>, </span><br><span class="line">        &#123;<span class="attr">encoding</span>:<span class="string">'utf-8'</span>,</span><br><span class="line">         recursive:<span class="literal">false</span>,</span><br><span class="line">         persistent:<span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        (eventType, filename)=&gt;&#123;</span><br><span class="line">	            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;eventType&#125;</span>`</span>)</span><br><span class="line">	            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;filename&#125;</span>`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其中<code>persistent:true</code>（默认为true）表示如果文件正在被监视，进程就继续运行不会跳出;<code>recursive:false</code>(默认值为false)表示所有的子目录都不会被监视.</p>
+<p>最后的第三个参数，也就是listener回调函数如果执行，就会传入两个参数<code>eventType</code>有<code>change</code>和<code>rename</code>这两个值，分别对应着改变文件内容和文件重命名。</p>
+<p>上述代码，当我改变<code>testFolder/childFolder</code>中的child.txt的内容时，函数内的回调将不会被执行，如果把<code>recursive</code>改成<code>true</code>则会打印：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">change</span><br><span class="line">childFolder/child.txt</span><br></pre></td></tr></table></figure>
+<p><strong>这里需要注意的是</strong>当我删除掉目录下的test.txt时 ‘rename’ 这个事件类型也会被触发！，又重新添加回来这个文件’rename’也会触发，往里面写与之前相同的东西保存又会触发’rename’，确实有点不明确的坑。</p>
+<p>而且在Node8.9.4的官方文档中说明原生的这个方法其他不足的地方</p>
+<blockquote>
+<p>The fs.watch API is not 100% consistent across platforms, and is    &gt; unavailable in some situations.<br>The recursive option is only supported on macOS and Windows.</p>
+<p>Providing filename argument in the callback is only supported on Linux, macOS, Windows, and AIX. Even on supported platforms, filename is not always guaranteed to be provided. Therefore, don’t assume that filename argument is always provided in the callback, and have some fallback logic if it is null.</p>
+</blockquote>
+<p>就是说fs.watch API 不是 100％ 跨平台一致的，且在某些情况下不可用。<br>而且<code>recursive</code>递归监视子目录选项只支持 macOS 和 Windows。并且listener回调中提供的 <code>filename</code> 参数仅在 Linux、macOS、Windows、以及 AIX 系统上支持。 即使在支持的平台中，filename 也不能保证提供。 因此，不要以为 <code>filename</code> 参数总是在回调中提供，如果它是空的，需要有一定的后备逻辑。为此官方文档上甚至给了你例子，生怕你信了这个<code>filename</code>,这也是下面会介绍的第三方模块<code>chokidar</code>文档上甚至“diss”了一下原生的一点。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fs.watch(<span class="string">'somedir'</span>, (eventType, filename) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`event type is: <span class="subst">$&#123;eventType&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">if</span> (filename) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`filename provided: <span class="subst">$&#123;filename&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'filename not provided'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="fs-watchFile-filename-options-listener"><a href="#fs-watchFile-filename-options-listener" class="headerlink" title="fs.watchFile(filename[, options], listener)"></a>fs.watchFile(filename[, options], listener)</h3><p>监视某一个文件</p>
+<ul>
+<li>options是个对象，两个选项<ul>
+<li><code>persistent</code>上面已经介绍过的功能，让进程处在监听状态不退出</li>
+<li><code>interval</code>轮询的时间单位是毫秒，表示被监听的文件每隔多久被轮一次，默认5001毫秒</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fs.watchFile(<span class="string">'./testFolder/test.txt'</span>, &#123;<span class="attr">interval</span>: <span class="number">1000</span>&#125;, (curr, prev)=&gt;&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;curr.ctime&#125;</span>`</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;prev,ctime&#125;</span>`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>此时如果改变test.txt，会触发回调，并且会传入两个参数<code>curr, prev</code>这两个参数都是<code>fs.Stats</code>类的实例。<code>curr</code>表示当前状态，<code>prev</code>表示之前状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fs.Stats类</span></span><br><span class="line">Stats &#123;</span><br><span class="line">  dev: <span class="number">2114</span>,</span><br><span class="line">  ino: <span class="number">48064969</span>,</span><br><span class="line">  mode: <span class="number">33188</span>,</span><br><span class="line">  nlink: <span class="number">1</span>,</span><br><span class="line">  uid: <span class="number">85</span>,</span><br><span class="line">  gid: <span class="number">100</span>,</span><br><span class="line">  rdev: <span class="number">0</span>,</span><br><span class="line">  size: <span class="number">527</span>,</span><br><span class="line">  blksize: <span class="number">4096</span>,</span><br><span class="line">  blocks: <span class="number">8</span>,</span><br><span class="line">  atimeMs: <span class="number">1318289051000.1</span>,</span><br><span class="line">  mtimeMs: <span class="number">1318289051000.1</span>,</span><br><span class="line">  ctimeMs: <span class="number">1318289051000.1</span>,</span><br><span class="line">  birthtimeMs: <span class="number">1318289051000.1</span>,</span><br><span class="line">  atime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,</span><br><span class="line">  mtime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,</span><br><span class="line">  ctime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,</span><br><span class="line">  birthtime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT &#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>atime</code>是文件被访问的时间,<code>mtime</code>是修改时间，<code>ctime</code>表示改变时间</p>
+<p>上述代码改变文件数据之后打印</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Thu</span> <span class="selector-tag">Jan</span> <span class="selector-tag">25</span> <span class="selector-tag">2018</span> <span class="selector-tag">21</span><span class="selector-pseudo">:16</span><span class="selector-pseudo">:25</span> <span class="selector-tag">GMT</span>+<span class="selector-tag">0800</span> (CST)</span><br><span class="line"><span class="selector-tag">Thu</span> <span class="selector-tag">Jan</span> <span class="selector-tag">25</span> <span class="selector-tag">2018</span> <span class="selector-tag">21</span><span class="selector-pseudo">:16</span><span class="selector-pseudo">:23</span> <span class="selector-tag">GMT</span>+<span class="selector-tag">0800</span> (CST)</span><br></pre></td></tr></table></figure>
+<p>官方提示<code>watchFile</code>方法效率差，尽可能别用。<br>总之就不得不说，类似于该文件被删除，然后又恢复这种情况，原生的状态和事件就是很不明确</p>
+<h2 id="第三方监视文件（夹）模块chokitar"><a href="#第三方监视文件（夹）模块chokitar" class="headerlink" title="第三方监视文件（夹）模块chokitar"></a>第三方监视文件（夹）模块chokitar</h2><p>先看一段chorkitar在说明文档里的<code>diss</code></p>
+<img src="/article/Node-WatchFile/chokidar-diss-native.png">
+<p>一句<strong>Has a lot of other issues</strong>确实扎心，主要就是diss native事件处理的不好，不过我也确实试了一下也是这种感受</p>
+<p>一句<strong>Chokidar resolves these problems.</strong>也很sao，加之很多知名项目正名，语法链式，也没什么说了。我们来看看这个模块是怎么用的。</p>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/About-My-Blog-Site/" rel="noopener" title="https://isliulei.com/article/About-My-Blog-Site/">https://isliulei.com/article/About-My-Blog-Site/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/Node-WatchFile/" rel="noopener" title="https://isliulei.com/article/Node-WatchFile/">https://isliulei.com/article/Node-WatchFile/</a>
                     </blockquote>
                 <hr>
 
                
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/JS-module/" data-toggle="tooltip" data-placement="top" title="JS的模块机制梳理和总结">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/article/ES7-ES7next/" data-toggle="tooltip" data-placement="top" title="为ES7&ES7+新特性开一个Note">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
     <!-- github isuue comment container-->
@@ -277,11 +293,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                        
-                          <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
+                          <a class="tag" href="/tags/#Node" title="Node">Node</a>
                         
                     </div>
                 </section>
@@ -313,7 +325,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/About-My-Blog-Site/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/Node-WatchFile/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
