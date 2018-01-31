@@ -5,12 +5,33 @@
     
   <url>
     <loc>https://isliulei.com/article/VScode/</loc>
-    <lastmod>2018-01-31T11:45:49.148Z</lastmod>
+    <lastmod>2018-01-31T12:53:03.348Z</lastmod>
     <data>
         <display>
         <title>VScode(for JS develop)使用记录与分享</title>
         <pubTime>2018-01-13T11:29:59.000Z</pubTime>
         
+        <tag>开发工具</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/ES7-ES7next/</loc>
+    <lastmod>2018-01-31T12:51:42.615Z</lastmod>
+    <data>
+        <display>
+        <title>为ES7&ES7+新特性开一个Note</title>
+        <pubTime>2018-01-24T07:48:36.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>ES7</tag>
+         
          
            
         </display>
@@ -27,27 +48,6 @@
         <pubTime>2018-01-25T09:57:31.000Z</pubTime>
         
         <tag>Node</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/ES7-ES7next/</loc>
-    <lastmod>2018-01-25T05:53:09.139Z</lastmod>
-    <data>
-        <display>
-        <title>为ES7&ES7+新特性开一个Note</title>
-        <pubTime>2018-01-24T07:48:36.000Z</pubTime>
-        
-        <tag>JavaScript</tag>
-         
-        <tag>ES7</tag>
-         
-        <tag>编程语言类</tag>
          
          
            
