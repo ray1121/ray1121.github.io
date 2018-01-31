@@ -14,11 +14,11 @@
 
     <title>
         
-            About My Blog Site - 刘雷的博客 | Ray&#39;s Blog
+            VScode使用记录与分享 - 刘雷的博客 | Ray&#39;s Blog
                 
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/About-My-Blog-Site/">
+    <link rel="canonical" href="https://isliulei.com/article/VScode/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -79,18 +79,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                            
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                            
-                              <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
-                            
                         </div>
-                        <h1>About My Blog Site</h1>
-                        <h2 class="subheading">Just a beginning...</h2>
+                        <h1>VScode使用记录与分享</h1>
+                        <h2 class="subheading">“真的可以说是良心编辑器了”</h2>
                         <span class="meta">
                             Posted by Ray on
-                            2018-01-10
+                            2018-01-13
                         </span>
                     </div>
                 
@@ -207,28 +201,344 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2><p>总之，我的博客网站算是差不多搭完了，如果有其他的优化也是等我先多记点东西之后了。</p>
-<p>最开始的时候想基于Node和Nuxt慢慢悠悠业余自己撘一个博客系统的，外带注册用户也能使用的样子:）然后。。在我的腾讯云学生1元云服务器上把它巧妙上线开放一把（mdzz），为此我甚至把博客系统的主题都想好了，就叫“Know Me || Let World Know You”，我甚至天真的觉得半年前liaojiewo.com这个域名被我缘分一样幸运拿下了都是天意:)….</p>
-<p>然而不善于折腾样式又穷的我最终还是走远了，记得研一的时候用腾讯一元学生服务器做实验的时候曾经被感动到，现在依旧每月定时交上一块续着那股神韵，缘起于曾经听到过别人对我说的一句<strong>“你背书包的样子好像一个学生…”</strong>。那时，我TM大二。</p>
-<p>我其实是习惯在纸上记东西的，写写画画之后我会觉得通透，一方面是现在在实习的时候发现确实还是在某个平台记录下来便于别人的指正和交流，另一方面现在觉得要是自己弄个站还是能有一种神秘的力量能督促一下我多总结知识的习惯。所以，便在2018伊始急迫的有了这个blog site。</p>
-<h2 id="关于这个site"><a href="#关于这个site" class="headerlink" title="关于这个site"></a>关于这个site</h2><p>我其实之前对怎么快速的撘出一个自己的博客网站是没什么去研究过的，只知道一个基于PHP的<a href="https://cn.wordpress.org" target="_blank" rel="noopener">Wordpress</a>还是很方便快捷，然而没怎么接触过PHP的我并没有去操作一下。每天早上都会去<a href="https://juejin.im/timeline" target="_blank" rel="noopener">掘金</a>上把新的技术文章都看一遍，上个星期从一个讲nuxt架构的一篇文章链到了这个我在About里shout out to的博主<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈，看了他写的很多文章写的都很好，其中就有一篇关于搭建博客网站的文章， 所用到的框架<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>是一个基于Node的快速搭建Blog的框架，看了一下官方文档确实配置和解耦做的相当好，尤其是主题中有我觉得非常到位的风格的出自<a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a>，而主题又是基于ejs这种Node的“官配”，甚至通过这个框架生成静态页面之后托管到<a href="https://pages.github.com" target="_blank" rel="noopener">GitPage</a>连服务器钱也巧妙的省了，甚至免去了服务器备案等一切烦心又耗时的事情，对于我来说实在是没有再不弄一个的理由了。所以在此还是要再一次对优秀的开源框架和Git这种优秀平台的感谢。</p>
-<p>所以这个站的具体实现细节，请移步前文提到的<a href="https://zoumiaojiang.com/article/how-to-build-a-blog/" target="_blank" rel="noopener">快速低成本的搭建一个马马虎虎的博客</a>，这位博主确实已经写得足够到位了，细致到你基本上可以画上一个周末折腾即可的程度。所以我在此也只会对于<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈没有提到的评论系统的使用做一些简单的补充，今后如果再折腾其他的东西也会在此做相应补充。</p>
-<p>关于评论系统，看了Hexo官网上有很多的Theme还是使用着<a href="https://baike.baidu.com/item/多说/5365567?fr=aladdin" target="_blank" rel="noopener">Duoshuo</a>（去年停服了）或者<a href="http://www.disqus.com" target="_blank" rel="noopener">Disqus</a>(你可能打不开，因为被墙了)，也看了几个其他的托管的评论服务，其中觉得<a href="http://www.laibili.com.cn" target="_blank" rel="noopener">来必力</a>还算不错，然而我最后选择的还是使用基于github issues的<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a>:),源自于考虑到我估计只会在这里写一些技术相关的文章，所以用一个只有github用户才能使用的评论系统也显得没有什么毛病，当然你自己也得有一个<a href="https://github.com" target="_blank" rel="noopener">github</a>账号。</p>
-<p>首先你应该在<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">这里</a>注册一个OAuth Application<br><img src="/article/About-My-Blog-Site/gitment.png" title="OAuth Application"></p>
-<p>然后你就会得到 client ID 和一个 client secret 然后就去你的theme布局里面想加入评论的page或者post的layout中嵌入这一段代码了，下面的id=container的div放到布局合适的位置。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span></span><br><span class="line"><span class="javascript">  id: <span class="string">'页面 ID'</span>, <span class="comment">// 可选。默认为 location.href</span></span></span><br><span class="line"><span class="javascript">  owner: <span class="string">'你的 GitHubID'</span>,</span></span><br><span class="line"><span class="javascript">  repo: <span class="string">'存储评论的repo'</span>,</span></span><br><span class="line"><span class="undefined">  oauth: &#123;</span></span><br><span class="line"><span class="javascript">    client_id: <span class="string">'Your client ID'</span>,</span></span><br><span class="line"><span class="javascript">    client_secret: <span class="string">'Your client secret'</span>,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="javascript">gitment.render(<span class="string">'container'</span>)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果你在OAuth Application中填写的回调地址以及其他的信息都正确的话,你应该会在页面看到如下相关评论的功能了</p>
-<img src="/article/About-My-Blog-Site/gitment-UI.png">
-<p>其中在gitment项目地址中也说明了，现在还是只能在发布一个新的页面之后你需要在你新的页面里面登录，并且在上图的<code>no Comment Yet</code>位置处会有一个初始化按钮<code>Initialize Your Comments</code>你必须要先登录然后点击初始化按钮之后，目的是在你的仓库里创建一个相关的issure，做完了这一步初始化之后，你的这个page或者是新的一篇文章别人就可以正常评论了。</p>
-<p>之后对站点的改进与实践也会继续更新。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>一直最为中意的莫过于黑，审美品位比较简单也比较复杂，所以网站的主题以黑底白字为主，<strong>Know Me</strong>的遗念也留下来了到了首页上。</p>
-<p>我主要的方向可能是在Web这一块，所以以后的博客可能也会偏JS和Node相关的内容比较多，当然，如果闲下来也想能总结总结python和redis，长时间不用感觉有点生疏,但毕竟是当时接触时感觉很喜欢的语言和数据库。当然，水平有限，能被有缘人看到和指正也是一件非常美好的事情。</p>
-<p>是很希望在2018年能够趁着还没有毕业多多抽出时间系统的总结一下知识点，比起纸上记笔记，一篇博客可能最起码要比挑重点的写写画画应该会要完整的很多，实习的这段时间收获很多，也希望今年下半年论文相关事情能顺利。所以矫情一点的话就是加油吧。</p>
-<img src="/article/About-My-Blog-Site/kobe-back.jpg">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>编辑器之间的竞争一直也十分的激烈，用过Webstom，Hbuilder，之前sublime也被我折腾的写代码十分舒服，然而当出现了几乎所有使用过的人都发出好评的<strong>VScode</strong>的时候必然还是想去试试，用完几个月之后，着实真心感觉到了微软这波诚意也是到位了，”真的舒服”是我唯一能表达的感受，所以就从个人的角度出发对vscode的使用做一个小结，本文类似一个记录板，快捷键和代码块简写确实用熟练了能提高我们写代码的速度，所以本文会从这些可以以记得东西出发，到我所使用的插件的推荐，再到代码块的简写记录来表达我对这款编辑器的好评，也当做一个不熟练的笔记本吧。</p>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>基础的到处使用类似于<code>ctr+c</code>是复制这种“客套话”就不说了….以下快捷键组合都是以<strong>MAC</strong>为例，<strong>不过带<code>cmd</code>键的你只要换成<code>ctr</code>在</strong>Win<strong>上也都是好使的</strong>。当然这些都是默认的快捷键，你自己改掉了一些快捷键不能说我赖皮。</p>
+<h3 id="常用cmd-shift-系列"><a href="#常用cmd-shift-系列" class="headerlink" title="常用cmd+shift+?系列"></a>常用<code>cmd+shift+?</code>系列</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmd+shift+D</td>
+<td>打开Debugger</td>
+</tr>
+<tr>
+<td>cmd+shift+K</td>
+<td>删除光标所在的一整行</td>
+</tr>
+<tr>
+<td>cmd+shift+L</td>
+<td>选择当前文件中所有你当前选中的词汇</td>
+</tr>
+<tr>
+<td>cmd+shift+F</td>
+<td>打开全局搜索</td>
+</tr>
+<tr>
+<td>cmd+shift+M</td>
+<td>打开你的问题面板</td>
+</tr>
+<tr>
+<td>cmd+shift+H</td>
+<td>对当前文件的查询替换</td>
+</tr>
+<tr>
+<td>cmd+shift+S</td>
+<td>文件另存为</td>
+</tr>
+<tr>
+<td>cmd+shift+T</td>
+<td>打开最近关闭的那个文件</td>
+</tr>
+<tr>
+<td>cmd+shift+X</td>
+<td>打开安装插件的入口</td>
+</tr>
+<tr>
+<td>cmd+shift+V</td>
+<td>预览MarkDown</td>
+</tr>
+<tr>
+<td>cmd+shift+空格</td>
+<td>参数提示</td>
+</tr>
+<tr>
+<td>cmd+shift+\</td>
+<td>光标跳转到花括号闭合处</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用的cmd-系列"><a href="#常用的cmd-系列" class="headerlink" title="常用的cmd+?系列"></a>常用的<code>cmd+?</code>系列</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmd+B</td>
+<td>打开或者关闭侧边栏</td>
+</tr>
+<tr>
+<td>cmd+W</td>
+<td>关闭当前窗口</td>
+</tr>
+<tr>
+<td>cmd+P</td>
+<td>打开最近关闭的文件</td>
+</tr>
+<tr>
+<td>cmd+]/[</td>
+<td>左右控制行缩进</td>
+</tr>
+<tr>
+<td>cmd+/</td>
+<td>注释一行或取消当前行的注释</td>
+</tr>
+<tr>
+<td>cmd+F</td>
+<td>查询在当前文件</td>
+</tr>
+<tr>
+<td>cmd+,</td>
+<td>打开用户设置</td>
+</tr>
+<tr>
+<td>cmd+N</td>
+<td>新建一个文件</td>
+</tr>
+<tr>
+<td>cmd+O</td>
+<td>打开一个文件</td>
+</tr>
+<tr>
+<td>ctr+`</td>
+<td>打开集成的终端</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用的cmd-K-系列"><a href="#常用的cmd-K-系列" class="headerlink" title="常用的cmd+K ?系列"></a>常用的<code>cmd+K ?</code>系列</h3><p>在Vscode中的<code>cmd+k</code>我觉得像是vim中的退出到命令执行模式,他会等待你继续按下下面的命令，你也可以认为一系列的<code>cmd+k</code>系的都是组合件<img src="/article/VScode/cmd+k.png">所以接下来就是<code>cmd+k</code>系列的快捷键了</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmd+k cmd+s</td>
+<td>打开快捷键设置(其实每个人的操作习惯不同，在此你可以自定义你的键组合)</td>
+</tr>
+<tr>
+<td>cmd+k U</td>
+<td>关闭工作区中没有更改的编辑窗口</td>
+</tr>
+<tr>
+<td>cmd+k Z</td>
+<td>进入zen模式，就是删除所有其他让人分心的元素，安心写代码的模式</td>
+</tr>
+<tr>
+<td>cmd+k R</td>
+<td>在mac中是在文件系统（Finder）中显示你正在编辑的文件</td>
+</tr>
+<tr>
+<td>cmd+k P</td>
+<td>复制当前文件的绝对路径</td>
+</tr>
+</tbody>
+</table>
+<p>其余的我不常用的就不列举了，可以在快件键设置中查找或者自定义你的指法:)</p>
+<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><p>插件推荐应该说明情况，由于本人的主要代码是Javascript（Node，ES6，ES5）和Python，主要框架为Vue，Express,也开始渐渐的直接在在Vscode中写Markdown了（之前使用<a href="http://macdown.uranusjr.com" target="_blank" rel="noopener">MacDown</a>其实也很舒服）。所以插件在于慢慢发现是和合适自己需求的，自己觉得舒服的。那么作为我的推荐以及我自己所使用的也会根据我自己的场景进行。</p>
+<ul>
+<li><strong>JavaScript</strong><ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="_blank" rel="noopener">JavaScript (ES6) code snippets</a>ES6常用语法生成代码块</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=akamud.vscode-javascript-snippet-pack" target="_blank" rel="noopener">JavaScript Snippet Pack</a>ES5常用操作DOM的语法代码块</li>
+</ul>
+</li>
+<li><p><strong>Node</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=leizongmin.node-module-intellisense" target="_blank" rel="noopener">Node.js Modules Intellisense</a>Node引入模块的时候智能提示</li>
+<li><a href="https://github.com/ChristianKohler/NpmIntellisense" target="_blank" rel="noopener">Npm Intellisense</a>功能与上一个插件类似，也是在引入模块的时候十分的智能</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost" target="_blank" rel="noopener">Import Cost</a>引入模块的时候后面能显示模块的大小</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=vladmrnv.expresssnippet" target="_blank" rel="noopener">expresssnippet</a>Express常用代码块</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=jeremyrajan.webpack" target="_blank" rel="noopener">webpack</a>生成一个简单的webpack.config.js的大体结构（支持ES6）供继续改造</li>
+</ul>
+</li>
+<li><p><strong>Python</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" rel="noopener">python</a> 6个million的下载量…</li>
+</ul>
+</li>
+<li><p><strong>Vue</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur" target="_blank" rel="noopener">Vetur</a>这个应该是开发vue必装的吧，语法高亮，功能强大。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=hollowtree.vue-snippets" target="_blank" rel="noopener">Vue 2 Snippets</a>提供一些常用模板代码块</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ElemeFE.vscode-element-helper" target="_blank" rel="noopener">vscode-element-helper</a>对<a href="http://element.eleme.io/#/zh-CN" target="_blank" rel="noopener">Element-UI</a>提供全方位的支持</li>
+</ul>
+</li>
+<li><p><strong>其他小工具</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">Auto Rename Tag</a>关闭html标签，改动前面的标签名后面闭合的也会一起改。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">Eslint</a>规范代码</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify" target="_blank" rel="noopener">Beautify</a>非常强大的格式化代码插件</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser" target="_blank" rel="noopener">open-in-browser</a>右键编辑中的html可以选择直接在浏览器中打开</li>
+</ul>
+</li>
+<li><p><strong>MarkDown</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced" target="_blank" rel="noopener">Markdown Preview Enhanced</a>提供非常舒服的预览，和其他比较全面的支持</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" target="_blank" rel="noopener">Markdown all in One</a>为markdown语法提供常用快捷键</li>
+</ul>
+</li>
+<li><p><strong>主题</strong></p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" rel="noopener">One Dark Pro</a>偏爱暗色系</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark" target="_blank" rel="noopener">Atom One Dark Theme</a>感觉跟上面的差不多</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons" target="_blank" rel="noopener">vscode-icons</a>文件图标</li>
+</ul>
+</li>
+</ul>
+<h2 id="生成代码块插件的缩写记录"><a href="#生成代码块插件的缩写记录" class="headerlink" title="生成代码块插件的缩写记录"></a>生成代码块插件的缩写记录</h2><ul>
+<li><strong>JavaScript (ES6) code snippets插件提供</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>生成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>imp</code></td>
+<td>会生成<code>import moduleName from &#39;modulename&#39;</code></td>
+</tr>
+<tr>
+<td><code>imn</code></td>
+<td>直接引入不加模块名<code>import module</code></td>
+</tr>
+<tr>
+<td><code>imd</code></td>
+<td>导入模块的一部分<code>import {  } from &#39;module&#39;;</code></td>
+</tr>
+<tr>
+<td><code>ime</code></td>
+<td>导入模块的所有内容并且进行重命名<code>import * as alias from &#39;module&#39;;</code></td>
+</tr>
+<tr>
+<td><code>ima</code></td>
+<td>导入部分并重命名<code>import { originalName as alias } from &#39;module&#39;</code></td>
+</tr>
+<tr>
+<td><code>enf</code></td>
+<td>使用<code>export</code>导出一个方法<code>export const functionName = (params) =&gt;  {};</code></td>
+</tr>
+<tr>
+<td><code>edf</code></td>
+<td>使用<code>export default</code> 到处一个默认方法<code>export default (params) =&gt;  {};</code></td>
+</tr>
+<tr>
+<td><code>ecl</code></td>
+<td>使用<code>export defauly</code>导出一个默认类<code>export default class className {};</code></td>
+</tr>
+<tr>
+<td><code>ece</code></td>
+<td>使用<code>export defauly</code>导出一个默认继承基类的类<code>export default class className extends baseclassName {}</code></td>
+</tr>
+<tr>
+<td><code>con</code></td>
+<td>类中的构造函数<code>constructor(params) {}</code></td>
+</tr>
+<tr>
+<td><code>met</code></td>
+<td>类中的方法<code>methodName(params) {}</code></td>
+</tr>
+<tr>
+<td><code>pge</code></td>
+<td>类属性的get方法<code>get propertyName() {return this.;}</code></td>
+</tr>
+<tr>
+<td><code>pse</code></td>
+<td>类属性中的set方法<code>set propertyName(value) {;}</code></td>
+</tr>
+<tr>
+<td><code>prom</code></td>
+<td>返回一个promise对象<code>return new Promise((resolve, reject) =&gt; {});</code></td>
+</tr>
+<tr>
+<td><code>anfn</code></td>
+<td>生成一个标准箭头函数<code>(params) =&gt; {}</code></td>
+</tr>
+<tr>
+<td><code>dar</code></td>
+<td>数组解构<code>const [propertyName] = arrayToDestruct;</code></td>
+</tr>
+<tr>
+<td><code>clg</code></td>
+<td><code>console.log</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>JavaScript Snippet Pack插件提供</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>生成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ae</code></td>
+<td>增添监听器<code>document.addEventListener(&#39;load&#39;, function (e) {});</code></td>
+</tr>
+<tr>
+<td><code>cel</code></td>
+<td>创建一个dom对象<code>document.createElement(elem);</code></td>
+</tr>
+<tr>
+<td><code>gi</code></td>
+<td><code>document.getElementById(&#39;id&#39;);</code></td>
+</tr>
+<tr>
+<td><code>gc</code></td>
+<td><code>document.getElementsByClassName(&#39;class&#39;);</code></td>
+</tr>
+<tr>
+<td><code>gt</code></td>
+<td><code>document.getElementsByTagName(&#39;tag&#39;);</code></td>
+</tr>
+<tr>
+<td><code>ih</code></td>
+<td><code>document.innerHTML = &#39;elem&#39;;</code></td>
+</tr>
+<tr>
+<td><code>afn</code></td>
+<td>function声明的匿名函数，正好补充了上面插件的<code>anfn</code>箭头函数</td>
+</tr>
+<tr>
+<td><code>fn</code></td>
+<td>具名函数<code>function methodName (arguments) {}</code></td>
+</tr>
+<tr>
+<td><code>jp</code></td>
+<td><code>JSON.parse(obj);</code></td>
+</tr>
+<tr>
+<td><code>js</code></td>
+<td><code>JSON.stringify(obj);</code></td>
+</tr>
+<tr>
+<td><code>iife</code></td>
+<td>立即执行函数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Vue 2 snippets 插件提供</strong></li>
+</ul>
+<p>好就在vue是单独一套的语法结构所以在使用vue的时候基本上你敲入<code>vue</code>三个字母的时候你想要的就已经看到了，不用特殊的记忆<img src="https://raw.githubusercontent.com/hollowtree/vscode-vue-snippets/master/img/show2.png" alt=""></p>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/About-My-Blog-Site/" rel="noopener" title="https://isliulei.com/article/About-My-Blog-Site/">https://isliulei.com/article/About-My-Blog-Site/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/VScode/" rel="noopener" title="https://isliulei.com/article/VScode/">https://isliulei.com/article/VScode/</a>
                     </blockquote>
                 <hr>
 
@@ -236,9 +546,13 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/VScode/" data-toggle="tooltip" data-placement="top" title="VScode使用记录与分享">&larr; Previous Post</a>
+                            <a href="/article/JS-module/" data-toggle="tooltip" data-placement="top" title="JS的模块机制梳理和总结">&larr; Previous Post</a>
                         </li>
                     
+                    
+                        <li class="next">
+                            <a href="/article/About-My-Blog-Site/" data-toggle="tooltip" data-placement="top" title="About My Blog Site">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
     <!-- github isuue comment container-->
@@ -278,12 +592,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
-                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                        
-                          <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
-                        
                     </div>
                 </section>
                 
@@ -314,7 +622,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/About-My-Blog-Site/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/VScode/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
