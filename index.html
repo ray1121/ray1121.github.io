@@ -202,6 +202,28 @@
 
 <div class="post-preview">
 
+    <a href="/article/Http-BasicAuth/">
+        <h2 class="post-title">
+            使用Node在服务端调HTTP Basic认证的API
+        </h2>
+        <h3 class="post-subtitle">
+            “axios”，“request”，“restler”
+        </h3>
+        <div class="post-content-preview">
+            前言Node作为前后端分离的”利器“由于它使用JS语法的特殊性，可以使得前端更好的利用Node来作为中间层十分方便得调用后台提供的“黑盒”API。即便是使用Node为主作为服务端开发在项目中也会经常用到要去其他的系统调用服务的场景。
+请求的认证一直是一个web系统很重要的一环，直接关系到了系统的安全。对于Node在服务端方面，稍微复杂的认证机制使用的最多的就是passport模块，通过它强大......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-02-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/Node-WatchFile/">
         <h2 class="post-title">
             文件（夹）监听---Node原生 VS chokidar
@@ -210,11 +232,7 @@
             Node原生 VS chokidar
         </h3>
         <div class="post-content-preview">
-            Node原生首先当然是先介绍Node对文件（夹）监听的原生方法，下面是我的测试demo的文件结构
-
-Node对文件或者文件夹的监听，通过原生模块fs提供的watch()和 watchFile()方法，先来看看他们的用法。
-fs.watch(filename[, options][, listener])其中filename可以是一个文件夹也可以可以使一个文件，
-对于第二个options参数，......
+            前言最近在看vue-hackernews-2.0代码的时候看到在build配置中用了一个chokidar的文件监听模块，一时好奇为什么不用fs.watch的原生操作，忽然想到确实对于监听文件方面确实只是停留在配置gulp监听文件修改后自动转换的gulp.watch，以及简单配置已经高集成的webpack，似乎平时并没有机会经常用Node“干净”的再去做监控操作。所以这篇文章就是建立在介绍使用......
         </div>
     </a>
     <p class="post-meta">
@@ -363,7 +381,11 @@ fs.watch(filename[, options][, listener])其中filename可以是一个文件夹�
                             
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="2">Node</a>
+                            <a href="/tags/#Node" title="Node" rel="3">Node</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="1">HTTP</a>
                             
                         
                             

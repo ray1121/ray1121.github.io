@@ -203,7 +203,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="Node原生"><a href="#Node原生" class="headerlink" title="Node原生"></a>Node原生</h2><p>首先当然是先介绍Node对文件（夹）监听的原生方法，下面是我的测试demo的文件结构</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在看<a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank" rel="noopener">vue-hackernews-2.0</a>代码的时候看到在build配置中用了一个<strong>chokidar</strong>的文件监听模块，一时好奇为什么不用fs.watch的原生操作，忽然想到确实对于监听文件方面确实只是停留在配置gulp监听文件修改后自动转换的<code>gulp.watch</code>，以及简单配置已经高集成的webpack，似乎平时并没有机会经常用Node“干净”的再去做监控操作。所以这篇文章就是建立在介绍使用node原生监听文件方式以及被类似于gulp和webpack也在使用的第三方模块“chokidar”，以及对比使用这两个同样功能的感受。</p>
+<h2 id="Node原生"><a href="#Node原生" class="headerlink" title="Node原生"></a>Node原生</h2><p>首先当然是先介绍Node对文件（夹）监听的原生方法，下面是我的测试demo的文件结构</p>
 <img src="/article/Node-WatchFile/testFolder.png">
 <p>Node对文件或者文件夹的监听，通过原生模块<code>fs</code>提供的<code>watch()</code>和 <code>watchFile()</code>方法，先来看看他们的用法。</p>
 <h3 id="fs-watch-filename-options-listener"><a href="#fs-watch-filename-options-listener" class="headerlink" title="fs.watch(filename[, options][, listener])"></a><code>fs.watch(filename[, options][, listener])</code></h3><p>其中filename可以是一个文件夹也可以可以使一个文件，</p>
@@ -243,24 +244,62 @@
 <p>一句<strong>Chokidar resolves these problems.</strong>也很sao，加之很多知名项目正名，语法链式，也没什么说了。我们来看看这个模块是怎么用的。</p>
 <p>API:</p>
 <p><code>chokidar.watch(paths, [options])</code></p>
-<p><strong>构造一个chokidar监听实例。</strong></p>
 <ul>
-<li>paths<ul>
+<li><p><strong>构造一个chokidar监听实例。</strong></p>
+</li>
+<li><p>paths</p>
+<ul>
 <li>一个字符串或者是一个数组，描述监听的文件或者文件夹的路径</li>
 </ul>
 </li>
 <li>options<ul>
 <li>对象数据类型，常用配置项：<ul>
-<li><code>persistent</code>bollean,与原生<code>fs.watch</code>一样,表示是否保护进程不退出持久监听，默认值为<code>true</code></li>
-<li><code>ignored</code>string,所要忽略监听的文件或者文件夹</li>
-<li><code>ignoreInitial</code>bollean,表示是否对增加文件或者增加文件夹的时候进行发送事件，<strong>默认值为false表示add/addDir会触发事件</strong></li>
-<li><code>usePolling</code>bollean，表示是否使用前面提到的<code>fs.watchFile()</code>进行轮询操作，由于轮询会导致cpu飙升，所以此选项通常在需要通过网络监视文件的时候才设置为<code>true</code>即使用<code>fs.watchFile()</code>，默认值为<code>false</code></li>
-<li></li>
+<li><code>persistent</code>:bollean,与原生<code>fs.watch</code>一样,表示是否保护进程不退出持久监听，默认值为<code>true</code></li>
+<li><code>ignored</code>:string,所要忽略监听的文件或者文件夹</li>
+<li><code>ignoreInitial</code>:bollean,表示是否对增加文件或者增加文件夹的时候进行发送事件，<strong>默认值为false表示add/addDir会触发事件</strong></li>
+<li><code>cwd</code>:string类型，没有默认值，类似于appBasepath，监听的<code>paths</code>所相对的路径。</li>
+<li><code>usePolling</code>:bollean，表示是否使用前面提到的<code>fs.watchFile()</code>进行轮询操作，由于轮询会导致cpu飙升，所以此选项通常在需要通过网络监视文件的时候才设置为<code>true</code>即使用<code>fs.watchFile()</code>，默认值为<code>false</code></li>
+<li><code>depth</code>:number类型,没有默认值，如果设定则表示限定了会递归监听多少个子目录。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+<p>eg:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> chokidar = <span class="built_in">require</span>(<span class="string">'chokidar'</span>)</span><br><span class="line"></span><br><span class="line">chokidar.watch(<span class="string">'testFolder'</span>, &#123;</span><br><span class="line">  persistent: <span class="literal">true</span>,</span><br><span class="line">  ignored: <span class="regexp">/(^|[\/\\])\../</span>,<span class="comment">//忽略点文件</span></span><br><span class="line">  cwd: <span class="string">'.'</span>,<span class="comment">//表示当前目录</span></span><br><span class="line">  depth:<span class="number">99</span><span class="comment">//到位了....</span></span><br><span class="line">&#125;).on(<span class="string">'all'</span>, (event, path) =&gt; &#123;<span class="comment">//监听除了ready, raw, and error之外所有的事件类型</span></span><br><span class="line">  <span class="built_in">console</span>.log(event, path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p> 运行该代码之后：<br>    </p>
+<p> <strong>表明在实例化监听对象的时候，因为默认<code>ignoreInitial: false</code>,chokidar会发emmit <code>add/addDir</code>事件，而此时要是在options对象中增加了<code>ignoreInitial: true,</code>表明忽略监听初始化追踪的栈事件，则在实例化得时候就不会捕捉到<code>add/addDir</code>事件了</strong></p>
+<p> 此外，chokidar也提供了更加多的事件层次，通过更多的options配合做到对文件的更好的监控，其中支持的事件有：</p>
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>新增文件时触发</td>
+</tr>
+<tr>
+<td>addDir</td>
+<td>新增文件夹的时候触发</td>
+</tr>
+<tr>
+<td>unlink</td>
+<td>对应的文件的删除</td>
+</tr>
+<tr>
+<td>unlinkDir</td>
+<td>对应的文件夹的删除</td>
+</tr>
+<tr>
+<td>change</td>
+<td>文件内容改变时触发</td>
+</tr>
+</tbody>
+</table>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
@@ -270,6 +309,10 @@
 
                
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Http-BasicAuth/" data-toggle="tooltip" data-placement="top" title="使用Node在服务端调HTTP Basic认证的API">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
