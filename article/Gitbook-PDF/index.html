@@ -14,11 +14,11 @@
 
     <title>
         
-                    刘雷的博客 | Ray&#39;s Blog
-                        
+            Mac上将gitbook转化成pdf文档下载 - 刘雷的博客 | Ray&#39;s Blog
+                
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/tags/开发工具/">
+    <link rel="canonical" href="https://isliulei.com/article/Gitbook-PDF/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -61,9 +61,9 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-                   
-            background-image: url('/undefined')
-            /*page*/
+        
+            background-image: url('/img/default_bg.jpg')
+            /*post*/
         
     }
     
@@ -76,10 +76,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>Ray</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">This is liulei</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                            
+                        </div>
+                        <h1>Mac上将gitbook转化成pdf文档下载</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Ray on
+                            2018-02-01
+                        </span>
                     </div>
                 
                 </div>
@@ -179,263 +187,100 @@
 
     <!-- Main Content -->
     
+<!-- Image to hack wechat -->
+<!-- <img src="https://isliulei.com/img/icon_wechat.jpg" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>直接安装<code>gitbook-pdf</code>这个命令行工具会踩坑，所以最好直接用下面的方法。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><ul>
+<li>安装<code>gitbook-cli</code> 以及 <code>gitbook</code></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="keyword">install</span> -g gitbook-cli</span><br><span class="line">sudo npm <span class="keyword">install</span> -g gitbook</span><br></pre></td></tr></table></figure>
+<p>安装完成后检查<code>gitbook -V</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CLI</span> <span class="selector-tag">version</span>: 2<span class="selector-class">.3</span><span class="selector-class">.2</span></span><br><span class="line"><span class="selector-tag">GitBook</span> <span class="selector-tag">version</span>: 3<span class="selector-class">.2</span><span class="selector-class">.3</span></span><br></pre></td></tr></table></figure>
+<p>此时直接使用命令转换会报错</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">InstallRequiredError:</span> <span class="string">"ebook-convert"</span> is not installed.</span><br><span class="line">Install it from <span class="string">Calibre:</span> <span class="string">https:</span><span class="comment">//calibre-ebook.com</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>缺少<code>ebook-convert</code>,需要安装操作系统对应的<a href="https://calibre-ebook.com/download" target="_blank" rel="noopener">calibre</a></li>
+<li>安装该应用完成后，建立命令行链接<code>sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin</code></li>
+</ul>
+<p>大功告成，找到一本gitbook的的github地址仓库，<code>git clone</code>到本地或者直接下载压缩包解压后进入该文件夹下，执行</p>
+<p><code>gitbook pdf . aName.pdf</code>即可生成命名pdf文件在当前文件夹下，当然你直接在文件夹下执行<code>gitbook pdf</code>也是可以的会生成默认名称的<code>book.pdf</code></p>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2018">
-                    <span class="tag-text">2018</span>
-                </span>
-                <ul>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-02
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/Http-BasicAuth/" style="color: #0085a1">
-                        <span>
-                            使用Node在服务端调用HTTP-Basic认证的API
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    01-25
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/Node-WatchFile/" style="color: #0085a1">
-                        <span>
-                            文件（夹）监听---Node原生 VS chokidar
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    01-24
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/ES7-ES7next/" style="color: #0085a1">
-                        <span>
-                            为ES7&ES7+新特性开一个Note
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    01-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/JS-module/" style="color: #0085a1">
-                        <span>
-                            JS的模块机制梳理和总结
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    01-13
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/VScode/" style="color: #0085a1">
-                        <span>
-                            VScode(for JS develop)使用记录与分享
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    01-10
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/About-My-Blog-Site/" style="color: #0085a1">
-                        <span>
-                            About My Blog Site
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+                <blockquote>
+                    本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
+                    转载请注明来源：<a href="https://isliulei.com/article/Gitbook-PDF/" rel="noopener" title="https://isliulei.com/article/Gitbook-PDF/">https://isliulei.com/article/Gitbook-PDF/</a>
+                    </blockquote>
+                <hr>
+
+               
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Http-BasicAuth/" data-toggle="tooltip" data-placement="top" title="使用Node在服务端调用HTTP-Basic认证的API">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Node-WatchFile/" data-toggle="tooltip" data-placement="top" title="文件（夹）监听---Node原生 VS chokidar">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
+    <!-- github isuue comment container-->
+    
+        <hr>
+        <div id="git-container"></div>
+    
             </div>
-            
-        </div>
-    </div>
-</div>
-
-                <!-- 如果开启评论功能 -->
-                
-
-            </div>
-    <!-- Sidebar Container -->
+    <!-- Side Catalog Container -->
+        
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
                 sidebar-container
-            ">
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                            <a href="/tags/#Blog" title="Blog" rel="1">Blog</a>
-                            
-                        
-                            
-                            <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
-                            
-                        
-                            
-                            <a href="/tags/#GitPage" title="GitPage" rel="1">GitPage</a>
-                            
-                        
-                            
-                            <a href="/tags/#Node" title="Node" rel="3">Node</a>
-                            
-                        
-                            
-                            <a href="/tags/#HTTP" title="HTTP" rel="1">HTTP</a>
-                            
-                        
-                            
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="2">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#ES7" title="ES7" rel="1">ES7</a>
-                            
-                        
-                            
-                            <a href="/tags/#ES6" title="ES6" rel="1">ES6</a>
-                            
-                        
-                            
-                            <a href="/tags/#Commonjs" title="Commonjs" rel="1">Commonjs</a>
-                            
-                        
-                            
-                            <a href="/tags/#模块机制" title="模块机制" rel="1">模块机制</a>
-                            
-                        
-                            
-                            <a href="/tags/#开发工具" title="开发工具" rel="1">开发工具</a>
-                            
+                       
+                          <a class="tag" href="/tags/#工具" title="工具">工具</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/avatar.jpg" />
-                        
-
-                        
-                            <p>this is liulei,AKA your bro</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank"  href="https://juejin.im/user/5a2a2ed9f265da43085df03d">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-stack-1x fa-inverse">掘</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/ray1121">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/2866571714">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -450,9 +295,31 @@
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+<!-- gitcoment JS代码 -->
+
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    var gitment = new Gitment({
+      id: 'https://isliulei.com/article/Gitbook-PDF/', // 可选。默认为 location.href
+      owner: 'ray1121',
+      repo: 'ray1121.github.io',
+      oauth: {
+        client_id: '0dec358cb186e06c3ed5',
+        client_secret: '2e4b2be32341a8a745d1841f0b1fcb8fe0da42c5',
+      },
+    })
+    gitment.render('git-container')
+    </script>
+    <!-- gitcoment 代码结束 -->
+    
+
 
 
     <!-- Footer -->
@@ -616,6 +483,50 @@
     </script>
 
 <!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 

@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>https://isliulei.com/article/Gitbook-PDF/</loc>
+    <lastmod>2018-02-05T12:06:04.068Z</lastmod>
+    <data>
+        <display>
+        <title>Mac上将gitbook转化成pdf文档下载</title>
+        <pubTime>2018-02-01T12:02:20.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/VScode/</loc>
+    <lastmod>2018-02-05T12:03:10.016Z</lastmod>
+    <data>
+        <display>
+        <title>VScode(for JS develop)使用记录与分享</title>
+        <pubTime>2018-01-13T11:29:59.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://isliulei.com/article/Http-BasicAuth/</loc>
     <lastmod>2018-02-02T14:29:03.604Z</lastmod>
     <data>
@@ -40,23 +74,6 @@
 
     
   <url>
-    <loc>https://isliulei.com/article/VScode/</loc>
-    <lastmod>2018-01-31T12:53:03.348Z</lastmod>
-    <data>
-        <display>
-        <title>VScode(for JS develop)使用记录与分享</title>
-        <pubTime>2018-01-13T11:29:59.000Z</pubTime>
-        
-        <tag>开发工具</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://isliulei.com/article/ES7-ES7next/</loc>
     <lastmod>2018-01-31T12:51:42.615Z</lastmod>
     <data>
@@ -83,9 +100,9 @@
         <title>JS的模块机制梳理和总结</title>
         <pubTime>2018-01-16T08:08:20.000Z</pubTime>
         
-        <tag>Node</tag>
-         
         <tag>JavaScript</tag>
+         
+        <tag>Node</tag>
          
         <tag>ES6</tag>
          
