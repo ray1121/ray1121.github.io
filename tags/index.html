@@ -186,21 +186,21 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#工具" title="工具" rel="2">工具</a>
-                
-                    <a href="#JavaScript" title="JavaScript" rel="2">JavaScript</a>
-                
-                    <a href="#ES7" title="ES7" rel="1">ES7</a>
-                
                     <a href="#Node" title="Node" rel="3">Node</a>
-                
-                    <a href="#HTTP" title="HTTP" rel="1">HTTP</a>
                 
                     <a href="#Blog" title="Blog" rel="1">Blog</a>
                 
                     <a href="#Hexo" title="Hexo" rel="1">Hexo</a>
                 
                     <a href="#GitPage" title="GitPage" rel="1">GitPage</a>
+                
+                    <a href="#JavaScript" title="JavaScript" rel="2">JavaScript</a>
+                
+                    <a href="#ES7" title="ES7" rel="1">ES7</a>
+                
+                    <a href="#工具" title="工具" rel="2">工具</a>
+                
+                    <a href="#HTTP" title="HTTP" rel="1">HTTP</a>
                 
                     <a href="#ES6" title="ES6" rel="1">ES6</a>
                 
@@ -214,8 +214,8 @@
 
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="工具">
-                    <span class="tag-text">工具</span>
+                <span class="fa fa-tag listing-seperator" id="Node">
+                    <span class="tag-text">Node</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -223,10 +223,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/Gitbook-PDF/">
+                     <a href="/article/Http-BasicAuth/">
                         <h2 class="post-title">
-                            Mac上将gitbook转化成pdf文档下载
+                            使用Node在服务端调用HTTP-Basic认证的API
                         </h2>
+                        
+                            <h3 class="post-subtitle">
+                                “axios”，“request”，“restler”
+                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -238,13 +242,110 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/VScode/">
+                     <a href="/article/JS-module/">
                         <h2 class="post-title">
-                            VScode(for JS develop)使用记录与分享
+                            JS的模块机制梳理和总结
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                “真的可以说是良心编辑器了”
+                                “砖规”
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Node-WatchFile/">
+                        <h2 class="post-title">
+                            文件（夹）监听---Node原生 VS chokidar
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Node原生 VS chokidar
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Blog">
+                    <span class="tag-text">Blog</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/About-My-Blog-Site/">
+                        <h2 class="post-title">
+                            About My Blog Site
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Just a beginning...
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Hexo">
+                    <span class="tag-text">Hexo</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/About-My-Blog-Site/">
+                        <h2 class="post-title">
+                            About My Blog Site
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Just a beginning...
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="GitPage">
+                    <span class="tag-text">GitPage</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/About-My-Blog-Site/">
+                        <h2 class="post-title">
+                            About My Blog Site
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Just a beginning...
                             </h3>
                         
                     </a>
@@ -326,8 +427,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Node">
-                    <span class="tag-text">Node</span>
+                <span class="fa fa-tag listing-seperator" id="工具">
+                    <span class="tag-text">工具</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -335,14 +436,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/Http-BasicAuth/">
+                     <a href="/article/Gitbook-PDF/">
                         <h2 class="post-title">
-                            使用Node在服务端调用HTTP-Basic认证的API
+                            Mac上将gitbook转化成pdf文档下载
                         </h2>
-                        
-                            <h3 class="post-subtitle">
-                                “axios”，“request”，“restler”
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -354,32 +451,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/JS-module/">
+                     <a href="/article/VScode/">
                         <h2 class="post-title">
-                            JS的模块机制梳理和总结
+                            VScode(for JS develop)使用记录与分享
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                “砖规”
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/Node-WatchFile/">
-                        <h2 class="post-title">
-                            文件（夹）监听---Node原生 VS chokidar
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Node原生 VS chokidar
+                                “真的可以说是良心编辑器了”
                             </h3>
                         
                     </a>
@@ -406,84 +484,6 @@
                         
                             <h3 class="post-subtitle">
                                 “axios”，“request”，“restler”
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Blog">
-                    <span class="tag-text">Blog</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/About-My-Blog-Site/">
-                        <h2 class="post-title">
-                            About My Blog Site
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Just a beginning...
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Hexo">
-                    <span class="tag-text">Hexo</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/About-My-Blog-Site/">
-                        <h2 class="post-title">
-                            About My Blog Site
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Just a beginning...
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="GitPage">
-                    <span class="tag-text">GitPage</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/About-My-Blog-Site/">
-                        <h2 class="post-title">
-                            About My Blog Site
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Just a beginning...
                             </h3>
                         
                     </a>

@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>https://isliulei.com/article/Gitbook-PDF/</loc>
     <lastmod>2018-02-05T12:06:04.068Z</lastmod>
@@ -100,9 +101,9 @@
         <title>JS的模块机制梳理和总结</title>
         <pubTime>2018-01-16T08:08:20.000Z</pubTime>
         
-        <tag>JavaScript</tag>
-         
         <tag>Node</tag>
+         
+        <tag>JavaScript</tag>
          
         <tag>ES6</tag>
          
@@ -137,7 +138,6 @@
     </data>
     </url>
 
-    
     
     
     
