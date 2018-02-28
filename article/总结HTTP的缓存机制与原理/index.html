@@ -14,11 +14,11 @@
 
     <title>
         
-            详解HTTP的缓存机制与原理 - 刘雷的博客 | Ray&#39;s Blog
+            总结HTTP的缓存机制与原理 - 刘雷的博客 | Ray&#39;s Blog
                 
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/详解HTTP的缓存机制与原理/">
+    <link rel="canonical" href="https://isliulei.com/article/总结HTTP的缓存机制与原理/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -84,7 +84,7 @@
                               <a class="tag" href="/tags/#HTTP" title="HTTP">HTTP</a>
                             
                         </div>
-                        <h1>详解HTTP的缓存机制与原理</h1>
+                        <h1>总结HTTP的缓存机制与原理</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Ray on
@@ -211,12 +211,12 @@
 <ul>
 <li>强缓存</li>
 </ul>
-<img src="/article/详解HTTP的缓存机制与原理/http强缓存时序图.png">
+<img src="/article/总结HTTP的缓存机制与原理/http强缓存时序图.png">
 <p>强缓存紧密联系着一个缓存时间期限，当浏览器请求资源的时候会查看缓存中的资源是否存在并且确定该缓存的资源是否过了“保质期”，若没有超过保质期则将取得缓存中的资源进行下一步处理</p>
 <ul>
 <li>协商缓存</li>
 </ul>
-<img src="/article/详解HTTP的缓存机制与原理/协商缓存.png">
+<img src="/article/总结HTTP的缓存机制与原理/协商缓存.png">
 <p>可见协商缓存无论如何都会和服务器交互，比较强缓存稍微要复杂一点，但是二者是相辅相成并且可以共同存在的，强缓存优先级较高，意味着请求一个资源时会先比较强缓存的字段，如果命中则不会再执行接下来的协商缓存的过程。</p>
 <p>接下来就是要介绍，两类缓存相关HTTP header相关字段的控制实现了。</p>
 <h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h3 id="1-强缓存"><a href="#1-强缓存" class="headerlink" title="1.强缓存"></a>1.强缓存</h3><p>与强缓存相关的HTTP header 的字段有两个 <code>Expires</code>以及<code>Cache-Control</code></p>
@@ -228,7 +228,7 @@
 <li><strong>cache-control</strong></li>
 </ul>
 <p>该字段的值（默认为private）：</p>
-<img src="/article/详解HTTP的缓存机制与原理/cache-control.png" title="图片摘自百度百科">
+<img src="/article/总结HTTP的缓存机制与原理/cache-control.png" title="图片摘自百度百科">
 <p>其中最常用的值max-age单位为秒，对比<code>expires</code>体现着一个相对时间,即多少秒后这个强缓存机制下的缓存资源失效。</p>
 <p><code>public</code>和<code>private</code>区别在于是否有中间商赚差价（是否允许CDN代理服务器缓存）</p>
 <p><strong>需要注意的一点是该字段值定义为<code>no-cache</code>并不是说，不准使用缓存，而是需要走接下来的优先级相对较低的另一类–协商缓存。真正决定不用缓存内的资源是将该值定义为<code>no-store</code></strong></p>
@@ -252,29 +252,29 @@
 <p>详细的express.static的细节请参考<a href="https://github.com/expressjs/serve-static?_ga=1.144436214.216536202.1417698367" target="_blank" rel="noopener">文档</a>，这里不过多赘述。</p>
 <p>之前我们提到过，expires这个选项是优先级相比较其他的控制选项，所以想要种  expires 观察效果是记得向上述app.js一样把其他的都关掉，因为他们都是默认为 <code>true</code>的。</p>
 <p>然后启动服务器，访问3000端口，打开开发人员工具，你就会看到如下被种了<code>expires</code>的响应头了。</p>
-<img src="/article/详解HTTP的缓存机制与原理/expires响应头.png">
+<img src="/article/总结HTTP的缓存机制与原理/expires响应头.png">
 <p>之后，你改变图片的名称，调换两张图片的名字，你就会发现在 expires 的时间到之前图片都不会发生变化，并且可见，他是从缓存中取得</p>
-<img src="/article/详解HTTP的缓存机制与原理/缓存.png">
+<img src="/article/总结HTTP的缓存机制与原理/缓存.png">
 <p>接下来，改变app.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(path.join(__dirname, <span class="string">"public"</span>), &#123;</span><br><span class="line">    etag: <span class="literal">false</span>,</span><br><span class="line">    maxAge:<span class="number">30000</span>,</span><br><span class="line">    lastModified:<span class="literal">false</span>,   </span><br><span class="line">    setHeaders:<span class="function"><span class="keyword">function</span>(<span class="params">res,path,stat</span>) </span>&#123;</span><br><span class="line">        res.set(&#123;</span><br><span class="line">            expires: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.now() + <span class="number">600000</span>),</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p><code>maxAge</code>的单位是毫秒，此时由于优先级的关系，覆盖掉 expires 之后在30秒之内交换图片名称，重新刷新浏览器将不会看到资源发生变化，知道<code>maxAge</code>的时间到。对应的响应头如下：</p>
-<img src="/article/详解HTTP的缓存机制与原理/实验2.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验2.png">
 <p>继续修改app.js:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(path.join(__dirname, <span class="string">"public"</span>), &#123;</span><br><span class="line">    etag: <span class="literal">false</span>,</span><br><span class="line">    maxAge:<span class="number">30000</span>,</span><br><span class="line">    cacheControl: <span class="literal">false</span>,</span><br><span class="line">    lastModified:<span class="literal">true</span>,   </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
 <p>你需要删掉对强缓存的设置，因为强缓存的设置会比协商缓存被先执行，同样的操作你将看到接下来的响应头和请求头。</p>
-<img src="/article/详解HTTP的缓存机制与原理/实验3-1.png">
-<img src="/article/详解HTTP的缓存机制与原理/实验3-2.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验3-1.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验3-2.png">
 <p>随后，你将上述优先级最高的 Etag 字段改为 <code>true</code>,得到的响应头和请求头信息如下：</p>
-<img src="/article/详解HTTP的缓存机制与原理/实验4-1.png">
-<img src="/article/详解HTTP的缓存机制与原理/实验4-2.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验4-1.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验4-2.png">
 <p>此外你也会发现如下情况：</p>
-<img src="/article/详解HTTP的缓存机制与原理/实验4-4.png">
-<img src="/article/详解HTTP的缓存机制与原理/实验4-3.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验4-4.png">
+<img src="/article/总结HTTP的缓存机制与原理/实验4-3.png">
 <p>这种现象就解释了，协商缓存虽然总是要访问服务器，但是当资源没有变动的时候，<strong>服务端只会返回带着304状态码的很小的一个头部</strong>，并不会像第一次携带文件资源那么大了。</p>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/详解HTTP的缓存机制与原理/" rel="noopener" title="https://isliulei.com/article/详解HTTP的缓存机制与原理/">https://isliulei.com/article/详解HTTP的缓存机制与原理/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/总结HTTP的缓存机制与原理/" rel="noopener" title="https://isliulei.com/article/总结HTTP的缓存机制与原理/">https://isliulei.com/article/总结HTTP的缓存机制与原理/</a>
                     </blockquote>
                 <hr>
 
@@ -358,7 +358,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/详解HTTP的缓存机制与原理/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/总结HTTP的缓存机制与原理/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
