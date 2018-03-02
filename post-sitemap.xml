@@ -8,7 +8,15 @@
 
     <url>
         <loc>https://isliulei.com/article/ES7-ES7next/</loc>
-        <lastmod>2018-03-02T01:58:46.496Z</lastmod>
+        <lastmod>2018-03-02T02:00:35.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/article/Node-WatchFile/</loc>
+        <lastmod>2018-03-02T02:00:14.905Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -65,14 +73,6 @@
     <url>
         <loc>https://isliulei.com/article/Http-BasicAuth/</loc>
         <lastmod>2018-02-02T14:29:03.604Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://isliulei.com/article/Node-WatchFile/</loc>
-        <lastmod>2018-02-02T09:10:07.971Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

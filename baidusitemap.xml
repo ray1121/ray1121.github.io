@@ -5,13 +5,32 @@
     
   <url>
     <loc>https://isliulei.com/article/ES7-ES7next/</loc>
-    <lastmod>2018-03-02T01:58:46.496Z</lastmod>
+    <lastmod>2018-03-02T02:00:35.224Z</lastmod>
     <data>
         <display>
         <title>为ES7&ES7+新特性开一个Note</title>
-        <pubTime>2017-12-26T07:48:36.000Z</pubTime>
+        <pubTime>2017-12-24T07:48:36.000Z</pubTime>
         
-        <tag>JavaScript - ES7</tag>
+        <tag>JavaScript</tag>
+         
+        <tag>ES7</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/Node-WatchFile/</loc>
+    <lastmod>2018-03-02T02:00:14.905Z</lastmod>
+    <data>
+        <display>
+        <title>文件（夹）监听---Node原生 VS chokidar</title>
+        <pubTime>2018-01-25T09:57:31.000Z</pubTime>
+        
+        <tag>Node</tag>
          
          
            
@@ -150,23 +169,6 @@
         <tag>Node</tag>
          
         <tag>HTTP</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/Node-WatchFile/</loc>
-    <lastmod>2018-02-02T09:10:07.971Z</lastmod>
-    <data>
-        <display>
-        <title>文件（夹）监听---Node原生 VS chokidar</title>
-        <pubTime>2018-01-25T09:57:31.000Z</pubTime>
-        
-        <tag>Node</tag>
          
          
            
