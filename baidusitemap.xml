@@ -4,6 +4,103 @@
 
     
   <url>
+    <loc>https://isliulei.com/article/ES7-ES7next/</loc>
+    <lastmod>2018-03-02T01:52:05.281Z</lastmod>
+    <data>
+        <display>
+        <title>为ES7&ES7+新特性开一个Note</title>
+        <pubTime>2017-12-26T07:48:36.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>ES7</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/About-node-redis-quit/</loc>
+    <lastmod>2018-03-02T01:51:49.328Z</lastmod>
+    <data>
+        <display>
+        <title>关于node-redis的优雅退出</title>
+        <pubTime>2017-12-22T01:47:25.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/JS-module/</loc>
+    <lastmod>2018-03-02T01:51:35.342Z</lastmod>
+    <data>
+        <display>
+        <title>JS的模块机制梳理和总结</title>
+        <pubTime>2017-12-20T08:08:20.000Z</pubTime>
+        
+        <tag>Node</tag>
+         
+        <tag>JavaScript</tag>
+         
+        <tag>ES6</tag>
+         
+        <tag>Commonjs</tag>
+         
+        <tag>模块机制</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/VScode/</loc>
+    <lastmod>2018-03-02T01:51:18.329Z</lastmod>
+    <data>
+        <display>
+        <title>VScode(for JS develop)使用记录与分享</title>
+        <pubTime>2017-12-13T11:29:59.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://isliulei.com/article/About-My-Blog-Site/</loc>
+    <lastmod>2018-03-02T01:50:54.345Z</lastmod>
+    <data>
+        <display>
+        <title>About My Blog Site</title>
+        <pubTime>2017-12-10T12:10:57.000Z</pubTime>
+        
+        <tag>Blog</tag>
+         
+        <tag>Hexo</tag>
+         
+        <tag>GitPage</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://isliulei.com/article/%E6%80%BB%E7%BB%93HTTP%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E4%B8%8E%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2018-02-28T02:15:23.173Z</lastmod>
     <data>
@@ -30,23 +127,6 @@
         <display>
         <title>Mac上将gitbook转化成pdf文档下载</title>
         <pubTime>2018-02-01T12:02:20.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/VScode/</loc>
-    <lastmod>2018-02-05T12:03:10.016Z</lastmod>
-    <data>
-        <display>
-        <title>VScode(for JS develop)使用记录与分享</title>
-        <pubTime>2018-01-13T11:29:59.000Z</pubTime>
         
         <tag>工具</tag>
          
@@ -85,71 +165,6 @@
         <pubTime>2018-01-25T09:57:31.000Z</pubTime>
         
         <tag>Node</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/ES7-ES7next/</loc>
-    <lastmod>2018-01-31T12:51:42.615Z</lastmod>
-    <data>
-        <display>
-        <title>为ES7&ES7+新特性开一个Note</title>
-        <pubTime>2018-01-24T07:48:36.000Z</pubTime>
-        
-        <tag>JavaScript</tag>
-         
-        <tag>ES7</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/JS-module/</loc>
-    <lastmod>2018-01-25T05:52:14.490Z</lastmod>
-    <data>
-        <display>
-        <title>JS的模块机制梳理和总结</title>
-        <pubTime>2018-01-16T08:08:20.000Z</pubTime>
-        
-        <tag>Node</tag>
-         
-        <tag>JavaScript</tag>
-         
-        <tag>ES6</tag>
-         
-        <tag>Commonjs</tag>
-         
-        <tag>模块机制</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://isliulei.com/article/About-My-Blog-Site/</loc>
-    <lastmod>2018-01-24T08:46:23.172Z</lastmod>
-    <data>
-        <display>
-        <title>About My Blog Site</title>
-        <pubTime>2018-01-10T12:10:57.000Z</pubTime>
-        
-        <tag>Blog</tag>
-         
-        <tag>Hexo</tag>
-         
-        <tag>GitPage</tag>
          
          
            
