@@ -14,11 +14,11 @@
 
     <title>
         
-            Mac上将gitbook转化成pdf文档下载 - 刘雷的博客 | Ray&#39;s Blog
+            Array.prototype.slice.call(arguments) - 刘雷的博客 | Ray&#39;s Blog
                 
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/Gitbook-PDF/">
+    <link rel="canonical" href="https://isliulei.com/article/Array-prototype-slice-call-arguments/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -79,14 +79,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                              <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                             
                         </div>
-                        <h1>Mac上将gitbook转化成pdf文档下载</h1>
+                        <h1>Array.prototype.slice.call(arguments)</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Ray on
-                            2018-02-01
+                            2018-01-27
                         </span>
                     </div>
                 
@@ -203,25 +203,32 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>直接安装<code>gitbook-pdf</code>这个命令行工具会踩坑，所以最好直接用下面的方法。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><ul>
-<li>安装<code>gitbook-cli</code> 以及 <code>gitbook</code></li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="keyword">install</span> -g gitbook-cli</span><br><span class="line">sudo npm <span class="keyword">install</span> -g gitbook</span><br></pre></td></tr></table></figure>
-<p>安装完成后检查<code>gitbook -V</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CLI</span> <span class="selector-tag">version</span>: 2<span class="selector-class">.3</span><span class="selector-class">.2</span></span><br><span class="line"><span class="selector-tag">GitBook</span> <span class="selector-tag">version</span>: 3<span class="selector-class">.2</span><span class="selector-class">.3</span></span><br></pre></td></tr></table></figure>
-<p>此时直接使用命令转换会报错</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">InstallRequiredError:</span> <span class="string">"ebook-convert"</span> is not installed.</span><br><span class="line">Install it from <span class="string">Calibre:</span> <span class="string">https:</span><span class="comment">//calibre-ebook.com</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>缺少<code>ebook-convert</code>,需要安装操作系统对应的<a href="https://calibre-ebook.com/download" target="_blank" rel="noopener">calibre</a></li>
-<li>安装该应用完成后，建立命令行链接<code>sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin</code></li>
-</ul>
-<p>大功告成，找到一本gitbook的的github地址仓库，<code>git clone</code>到本地或者直接下载压缩包解压后进入该文件夹下，执行</p>
-<p><code>gitbook pdf . aName.pdf</code>即可生成命名pdf文件在当前文件夹下，当然你直接在文件夹下执行<code>gitbook pdf</code>也是可以的会生成默认名称的<code>book.pdf</code></p>
+                <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>一句话概括就是将 arguments 转化为<strong>真正的数组</strong>输出出去。何为真正的数组？真正的数组是相对于“伪数组”来说的，常见的有 NodeList 与 HTMLCollection 还有 函数的参数 arguments。 这些伪数组最大的共同特点就是他们都具有 length 属性，并且属性名为数字，但是并不能用真正数组的那些像是 push(),pop(),slice()，这些方法。</p>
+<h3 id="V8源码"><a href="#V8源码" class="headerlink" title="V8源码"></a>V8源码</h3><p>v8/src/js/array.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArraySlice</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">  CHECK_OBJECT_COERCIBLE(<span class="keyword">this</span>, <span class="string">"Array.prototype.slice"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> array = TO_OBJECT(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">var</span> len = TO_LENGTH(array.length);</span><br><span class="line">  <span class="keyword">var</span> start_i = TO_INTEGER(start);</span><br><span class="line">  <span class="keyword">var</span> end_i = len;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!IS_UNDEFINED(end)) end_i = TO_INTEGER(end);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (start_i &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    start_i += len;</span><br><span class="line">    <span class="keyword">if</span> (start_i &lt; <span class="number">0</span>) start_i = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (start_i &gt; len) start_i = len;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (end_i &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    end_i += len;</span><br><span class="line">    <span class="keyword">if</span> (end_i &lt; <span class="number">0</span>) end_i = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (end_i &gt; len) end_i = len;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> result = ArraySpeciesCreate(array, MaxSimple(end_i - start_i, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (end_i &lt; start_i) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (UseSparseVariant(array, len, IS_ARRAY(array), end_i - start_i)) &#123;</span><br><span class="line">    %NormalizeElements(array);</span><br><span class="line">    %NormalizeElements(result);</span><br><span class="line">    SparseSlice(array, start_i, end_i - start_i, len, result);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    SimpleSlice(array, start_i, end_i - start_i, len, result);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  result.length = end_i - start_i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>大体的意思</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">slice</span>(<span class="params">start, end</span>) </span>&#123;   </span><br><span class="line"><span class="keyword">var</span> len = <span class="keyword">this</span>.length, result = [];</span><br><span class="line"><span class="comment">//省略对调用start和end情况的判断</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = start; i &lt; end; i++) &#123;   </span><br><span class="line">    result.push(<span class="keyword">this</span>[i]);   </span><br><span class="line">&#125;   </span><br><span class="line">    <span class="keyword">return</span> result;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于我们的 <code>Array.prototype.slice.call(arguments)</code>就是没有往 slice中传入 start 和 end 默认是从0 开始到最大长度为止。</p>
+<p><strong>什么是arguments</strong></p>
+<p>arguments对象是所有（非箭头）函数中都可用的局部变量。你可以使用arguments对象在函数中引用函数的参数。此对象包含传递给函数的每个参数的条目，第一个条目的索引从0开始。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/article/Array-prototype-slice-call-arguments/arguments.png"></p>
+<p>这就是一个伪数组，我想让他成为真正数组怎么办呢</p>
+<p><strong>什么是call</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    a:<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn()</span><br><span class="line"></span><br><span class="line">fn.call(obj)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">undefinded</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>简要的说 call 可以用来改变函数中的this指向，看了之前的slice的源码，发现只要你有 length 属性 那么 slice 会根据对象的<strong>数字</strong>属性名来得到对应的值并将它作为数组的元素。</p>
+<p>那么就可以得出 <code>Array.prototype.slice.call(arguments)</code>得到的就是一个 function 参数数组了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(args)</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>打印结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ]</span><br></pre></td></tr></table></figure>
+<p>thunkify 源码中的应用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">thunkify</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">		<span class="keyword">var</span> ctx = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> called = <span class="literal">false</span>;</span><br><span class="line">			args.push(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="keyword">if</span> (called) <span class="keyword">return</span>;</span><br><span class="line">				called = <span class="literal">true</span>;</span><br><span class="line">				done.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>);</span><br><span class="line">			&#125;);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				fn.apply(ctx, args);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">				done(err);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/Gitbook-PDF/" rel="noopener" title="https://isliulei.com/article/Gitbook-PDF/">https://isliulei.com/article/Gitbook-PDF/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/Array-prototype-slice-call-arguments/" rel="noopener" title="https://isliulei.com/article/Array-prototype-slice-call-arguments/">https://isliulei.com/article/Array-prototype-slice-call-arguments/</a>
                     </blockquote>
                 <hr>
 
@@ -229,12 +236,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Http-BasicAuth/" data-toggle="tooltip" data-placement="top" title="使用Node在服务端调用HTTP-Basic认证的API">&larr; Previous Post</a>
+                            <a href="/article/Gitbook-PDF/" data-toggle="tooltip" data-placement="top" title="Mac上将gitbook转化成pdf文档下载">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Array-prototype-slice-call-arguments/" data-toggle="tooltip" data-placement="top" title="Array.prototype.slice.call(arguments)">Next Post &rarr;</a>
+                            <a href="/article/Node-WatchFile/" data-toggle="tooltip" data-placement="top" title="文件（夹）监听---Node原生 VS chokidar">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -275,7 +282,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
                 </section>
@@ -307,7 +314,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/Gitbook-PDF/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/Array-prototype-slice-call-arguments/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
