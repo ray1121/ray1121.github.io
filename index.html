@@ -202,6 +202,54 @@
 
 <div class="post-preview">
 
+    <a href="/article/NPM小记/">
+        <h2 class="post-title">
+            一篇 NPM 小记
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            常见问题1.npm 的package.json中的~和^
+~会匹配最近的小版本依赖包，比如~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0
+^会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0
+
+你也有可能会看见在 package.json 中模块的版本号前面既没有 ~ 也没有 ^ 就像下面那样：
+1"moment": "2.4......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-03-07
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Node异步流程控制实践与总结/">
+        <h2 class="post-title">
+            Node异步流程控制实践与总结
+        </h2>
+        <h3 class="post-subtitle">
+            从 “async” 到 async
+        </h3>
+        <div class="post-content-preview">
+            Node的异步概念理解异步非阻塞提到Node，异步非阻塞会是第一个需要你理解的概念。很多人会把这实际上是两个概念的词混为一谈，认为异步就是非阻塞的，而同步就是阻塞的。从实际的效果出发，异步IO和非阻塞IO实际上都能达到我们对于IO繁重的网络应用并行IO的追求。但是实际上这是两个很不一样的概念。
+从操作系统的内核角度出发，I/O调用只有两种方式，阻塞和非阻塞。二者的区别在于，对于使用阻塞IO调......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-03-06
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/总结HTTP的缓存机制与原理/">
         <h2 class="post-title">
             总结HTTP的缓存机制与原理
@@ -384,55 +432,16 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/VScode/">
-        <h2 class="post-title">
-            VScode(for JS develop)使用记录与分享
-        </h2>
-        <h3 class="post-subtitle">
-            “真的可以说是良心编辑器了”
-        </h3>
-        <div class="post-content-preview">
-            前言编辑器之间的竞争一直也十分的激烈，用过Webstom，Hbuilder，之前sublime也被我折腾的写代码十分舒服，然而当出现了几乎所有使用过的人都发出好评的VScode的时候必然还是想去试试，用完几个月之后，着实真心感觉到了微软这波诚意也是到位了，”真的舒服”是我唯一能表达的感受，所以就从个人的角度出发对vscode的使用做一个小结，本文类似一个记录板，快捷键和代码块简写确实用熟练了......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2017-12-13
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/About-My-Blog-Site/">
-        <h2 class="post-title">
-            About My Blog Site
-        </h2>
-        <h3 class="post-subtitle">
-            Just a beginning...
-        </h3>
-        <div class="post-content-preview">
-            一些想法总之，我的博客网站算是差不多搭完了，如果有其他的优化也是等我先多记点东西之后了。
-最开始的时候想基于Node和Nuxt慢慢悠悠业余自己撘一个博客系统的，外带注册用户也能使用的样子:）然后。。在我的腾讯云学生1元云服务器上把它巧妙上线开放一把（mdzz），为此我甚至把博客系统的主题都想好了，就叫“Know Me || Let World Know You”，我甚至天真的觉得半年前lia......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2017-12-10
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
 
 <ul class="pager">
     
+    
+        <li class="next">
+            <a href="/archives/2/">Older Posts &rarr;</a>
+        </li>
     
 </ul>
 
@@ -458,10 +467,6 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                     <div class="tags">
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="5">Node</a>
-                            
-                        
-                            
                             <a href="/tags/#Blog" title="Blog" rel="1">Blog</a>
                             
                         
@@ -471,6 +476,10 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                         
                             
                             <a href="/tags/#GitPage" title="GitPage" rel="1">GitPage</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
                             
                         
                             
@@ -486,10 +495,6 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                             
                         
                             
-                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
-                            
-                        
-                            
                             <a href="/tags/#ES6" title="ES6" rel="1">ES6</a>
                             
                         
@@ -499,6 +504,14 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                         
                             
                             <a href="/tags/#模块机制" title="模块机制" rel="1">模块机制</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#NPM" title="NPM" rel="1">NPM</a>
                             
                         
                     </div>

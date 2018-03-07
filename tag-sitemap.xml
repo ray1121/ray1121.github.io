@@ -65,15 +65,22 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/Node/</loc>
-        <lastmod>2018-03-02T02:00:14.905Z</lastmod>
+        <loc>https://isliulei.com/tags/JavaScript/</loc>
+        <lastmod>2018-03-05T11:34:32.826Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/JavaScript/</loc>
-        <lastmod>2018-03-05T11:34:32.826Z</lastmod>
+        <loc>https://isliulei.com/tags/Node/</loc>
+        <lastmod>2018-03-07T09:24:52.555Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/NPM/</loc>
+        <lastmod>2018-03-07T09:24:52.555Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
