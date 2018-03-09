@@ -72,15 +72,22 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/Node/</loc>
+        <loc>https://isliulei.com/tags/NPM/</loc>
         <lastmod>2018-03-07T09:24:52.555Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/NPM/</loc>
-        <lastmod>2018-03-07T09:24:52.555Z</lastmod>
+        <loc>https://isliulei.com/tags/Node/</loc>
+        <lastmod>2018-03-09T07:19:25.546Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/Express/</loc>
+        <lastmod>2018-03-09T07:19:25.546Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

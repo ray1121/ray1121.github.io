@@ -14,11 +14,11 @@
 
     <title>
         
-            About My Blog Site - 刘雷的博客 | Ray&#39;s Blog
+            当我们调用Express的res.render - 刘雷的博客 | Ray&#39;s Blog
                 
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/About-My-Blog-Site/">
+    <link rel="canonical" href="https://isliulei.com/article/当我们调用Express的res-render/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -79,18 +79,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                              <a class="tag" href="/tags/#Node" title="Node">Node</a>
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                            
-                              <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
+                              <a class="tag" href="/tags/#Express" title="Express">Express</a>
                             
                         </div>
-                        <h1>About My Blog Site</h1>
-                        <h2 class="subheading">Just a beginning...</h2>
+                        <h1>当我们调用Express的res.render</h1>
+                        <h2 class="subheading">看源代码系列</h2>
                         <span class="meta">
                             Posted by Ray on
-                            2017-12-10
+                            2018-02-07
                         </span>
                     </div>
                 
@@ -207,28 +205,21 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2><p>总之，我的博客网站算是差不多搭完了，如果有其他的优化也是等我先多记点东西之后了。</p>
-<p>最开始的时候想基于Node和Nuxt慢慢悠悠业余自己撘一个博客系统的，外带注册用户也能使用的样子:）然后。。在我的腾讯云学生1元云服务器上把它巧妙上线开放一把（mdzz），为此我甚至把博客系统的主题都想好了，就叫“Know Me || Let World Know You”，我甚至天真的觉得半年前liaojiewo.com这个域名被我缘分一样幸运拿下了都是天意:)….</p>
-<p>然而不善于折腾样式又穷的我最终还是走远了，记得研一的时候用腾讯一元学生服务器做实验的时候曾经被感动到，现在依旧每月定时交上一块续着那股神韵，缘起于曾经听到过别人对我说的一句<strong>“你背书包的样子好像一个学生…”</strong>。那时，我TM大二。</p>
-<p>我其实是习惯在纸上记东西的，写写画画之后我会觉得通透，一方面是现在在实习的时候发现确实还是在某个平台记录下来便于别人的指正和交流，另一方面现在觉得要是自己弄个站还是能有一种神秘的力量能督促一下我多总结知识的习惯。所以，便在2018伊始急迫的有了这个blog site。</p>
-<h2 id="关于这个site"><a href="#关于这个site" class="headerlink" title="关于这个site"></a>关于这个site</h2><p>我其实之前对怎么快速的撘出一个自己的博客网站是没什么去研究过的，只知道一个基于PHP的<a href="https://cn.wordpress.org" target="_blank" rel="noopener">Wordpress</a>还是很方便快捷，然而没怎么接触过PHP的我并没有去操作一下。每天早上都会去<a href="https://juejin.im/timeline" target="_blank" rel="noopener">掘金</a>上把新的技术文章都看一遍，上个星期从一个讲nuxt架构的一篇文章链到了这个我在About里shout out to的博主<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈，看了他写的很多文章写的都很好，其中就有一篇关于搭建博客网站的文章， 所用到的框架<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>是一个基于Node的快速搭建Blog的框架，看了一下官方文档确实配置和解耦做的相当好，尤其是主题中有我觉得非常到位的风格的出自<a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a>，而主题又是基于ejs这种Node的“官配”，甚至通过这个框架生成静态页面之后托管到<a href="https://pages.github.com" target="_blank" rel="noopener">GitPage</a>连服务器钱也巧妙的省了，甚至免去了服务器备案等一切烦心又耗时的事情，对于我来说实在是没有再不弄一个的理由了。所以在此还是要再一次对优秀的开源框架和Git这种优秀平台的感谢。</p>
-<p>所以这个站的具体实现细节，请移步前文提到的<a href="https://zoumiaojiang.com/article/how-to-build-a-blog/" target="_blank" rel="noopener">快速低成本的搭建一个马马虎虎的博客</a>，这位博主确实已经写得足够到位了，细致到你基本上可以画上一个周末折腾即可的程度。所以我在此也只会对于<a href="https://zoumiaojiang.com" target="_blank" rel="noopener">ZouMiaojiang Blog</a>前辈没有提到的评论系统的使用做一些简单的补充，今后如果再折腾其他的东西也会在此做相应补充。</p>
-<p>关于评论系统，看了Hexo官网上有很多的Theme还是使用着<a href="https://baike.baidu.com/item/多说/5365567?fr=aladdin" target="_blank" rel="noopener">Duoshuo</a>（去年停服了）或者<a href="http://www.disqus.com" target="_blank" rel="noopener">Disqus</a>(你可能打不开，因为被墙了)，也看了几个其他的托管的评论服务，其中觉得<a href="http://www.laibili.com.cn" target="_blank" rel="noopener">来必力</a>还算不错，然而我最后选择的还是使用基于github issues的<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment</a>:),源自于考虑到我估计只会在这里写一些技术相关的文章，所以用一个只有github用户才能使用的评论系统也显得没有什么毛病，当然你自己也得有一个<a href="https://github.com" target="_blank" rel="noopener">github</a>账号。</p>
-<p>首先你应该在<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">这里</a>注册一个OAuth Application<br><img src="/article/About-My-Blog-Site/gitment.png" title="OAuth Application"></p>
-<p>然后你就会得到 client ID 和一个 client secret 然后就去你的theme布局里面想加入评论的page或者post的layout中嵌入这一段代码了，下面的id=container的div放到布局合适的位置。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span></span><br><span class="line"><span class="actionscript">  id: <span class="string">'页面 ID'</span>, <span class="comment">// 可选。默认为 location.href</span></span></span><br><span class="line"><span class="actionscript">  owner: <span class="string">'你的 GitHubID'</span>,</span></span><br><span class="line"><span class="actionscript">  repo: <span class="string">'存储评论的repo'</span>,</span></span><br><span class="line"><span class="undefined">  oauth: &#123;</span></span><br><span class="line"><span class="actionscript">    client_id: <span class="string">'Your client ID'</span>,</span></span><br><span class="line"><span class="actionscript">    client_secret: <span class="string">'Your client secret'</span>,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="actionscript">gitment.render(<span class="string">'container'</span>)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果你在OAuth Application中填写的回调地址以及其他的信息都正确的话,你应该会在页面看到如下相关评论的功能了</p>
-<img src="/article/About-My-Blog-Site/gitment-UI.png">
-<p>其中在gitment项目地址中也说明了，现在还是只能在发布一个新的页面之后你需要在你新的页面里面登录，并且在上图的<code>no Comment Yet</code>位置处会有一个初始化按钮<code>Initialize Your Comments</code>你必须要先登录然后点击初始化按钮之后，目的是在你的仓库里创建一个相关的issure，做完了这一步初始化之后，你的这个page或者是新的一篇文章别人就可以正常评论了。</p>
-<p>之后对站点的改进与实践也会继续更新。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>一直最为中意的莫过于黑，审美品位比较简单也比较复杂，所以网站的主题以黑底白字为主，<strong>Know Me</strong>的遗念也留下来了到了首页上。</p>
-<p>我主要的方向可能是在Web这一块，所以以后的博客可能也会偏JS和Node相关的内容比较多，当然，如果闲下来也想能总结总结python和redis，长时间不用感觉有点生疏,但毕竟是当时接触时感觉很喜欢的语言和数据库。当然，水平有限，能被有缘人看到和指正也是一件非常美好的事情。</p>
-<p>是很希望在2018年能够趁着还没有毕业多多抽出时间系统的总结一下知识点，比起纸上记笔记，一篇博客可能最起码要比挑重点的写写画画应该会要完整的很多，实习的这段时间收获很多，也希望今年下半年论文相关事情能顺利。所以矫情一点的话就是加油吧。</p>
-<img src="/article/About-My-Blog-Site/kobe-back.jpg">
+                <p>当我们使用 Express 做服务端框架的时候，如果选择一种类似于 <a href="https://www.npmjs.com/package/ejs" target="_blank" rel="noopener">EJS</a>这种模板引擎渲染前端页面的时候，经常服务端在响应 http 请求的时候调用 <code>res.render({options})</code> 去向模板中渲染数据。</p>
+<p>我们还会经常看到 res.locals 和 app.locals 这对象，那么他们到底是干什么的呢? 查看原代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//express/lib/response.js</span></span><br><span class="line">res.render = <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">view, options, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> app = <span class="keyword">this</span>.req.app;</span><br><span class="line">  <span class="keyword">var</span> done = callback;</span><br><span class="line">  <span class="keyword">var</span> opts = options || &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> req = <span class="keyword">this</span>.req;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// support callback function as second arg</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">'function'</span>) &#123;</span><br><span class="line">    done = options;</span><br><span class="line">    opts = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// merge res.locals</span></span><br><span class="line">  opts._locals = self.locals;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// default callback to respond</span></span><br><span class="line">  done = done || <span class="function"><span class="keyword">function</span> (<span class="params">err, str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> req.next(err);</span><br><span class="line">    self.send(str);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// render</span></span><br><span class="line">  app.render(view, opts, done);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>变量 opts 初始时获得开发人员代码中传入的 options 对象，这段代码中的<code>opts._locals = self.locals;</code> self 指向 res 对象自身，即又在最终渲染到模板中的变量里面增添了一个对象属性，<strong>该属性的值为 <code>res.locals</code></strong></p>
+<p>紧接着调用到了 <code>app.render</code>函数，并传入 opts 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//express/lib/application.js</span></span><br><span class="line">app.render = <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">name, options, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cache = <span class="keyword">this</span>.cache;</span><br><span class="line">  <span class="keyword">var</span> done = callback;</span><br><span class="line">  <span class="keyword">var</span> engines = <span class="keyword">this</span>.engines;</span><br><span class="line">  <span class="keyword">var</span> opts = options;</span><br><span class="line">  <span class="keyword">var</span> renderOptions = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> view;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// support callback function as second arg</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">'function'</span>) &#123;</span><br><span class="line">    done = options;</span><br><span class="line">    opts = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// merge app.locals</span></span><br><span class="line">  merge(renderOptions, <span class="keyword">this</span>.locals);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// merge options._locals</span></span><br><span class="line">  <span class="keyword">if</span> (opts._locals) &#123;</span><br><span class="line">    merge(renderOptions, opts._locals);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  merge(renderOptions, opts);</span><br><span class="line">  ........</span><br><span class="line">  ........</span><br></pre></td></tr></table></figure>
+<p>  <a href="https://www.npmjs.com/package/merge" target="_blank" rel="noopener">merge</a>是一个很方便合并两个对象的第三方模块。</p>
+<p>  不难看出 这函数在得出最终的渲染变量对象的时候又再一次 merge了app.locals对象，将开发人员 res.render 传入的对象，res.locals 对象，app.locals 对象三者合并作为渲染模板的素材。</p>
+<p>  知道这个过程之后，很容易就能理解为什么经常在项目入口文件 app.js 中经常看到如下代码：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 设置站点全局常量</span></span><br><span class="line">app.locals.website = &#123;</span><br><span class="line">  title: <span class="string">"网站的名字"</span>,</span><br><span class="line">  description: <span class="string">"网站的介绍"</span>,</span><br><span class="line">  keywords: <span class="string">"网站的全局关键词"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置可变但是又是每个模板总是需要的一些模板变量</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.locals.user = req.session.user</span><br><span class="line">  res.locals.success = req.flash(<span class="string">'success'</span>).toString()</span><br><span class="line">  res.locals.error = req.flash(<span class="string">'error'</span>).toString()</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>res.render 传入的对象作为特定场景特定页面的个性化变量信息数据，<code>app.locals</code> 上通常挂载常量信息，<code>res.locals</code> 上通常挂载变量信息,三者相辅相成的共同构成渲染模板的整个变量信息。</p>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/About-My-Blog-Site/" rel="noopener" title="https://isliulei.com/article/About-My-Blog-Site/">https://isliulei.com/article/About-My-Blog-Site/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/当我们调用Express的res-render/" rel="noopener" title="https://isliulei.com/article/当我们调用Express的res-render/">https://isliulei.com/article/当我们调用Express的res-render/</a>
                     </blockquote>
                 <hr>
 
@@ -236,9 +227,13 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/VScode/" data-toggle="tooltip" data-placement="top" title="VScode(for JS develop)使用记录与分享">&larr; Previous Post</a>
+                            <a href="/article/总结HTTP的缓存机制与原理/" data-toggle="tooltip" data-placement="top" title="总结HTTP的缓存机制与原理">&larr; Previous Post</a>
                         </li>
                     
+                    
+                        <li class="next">
+                            <a href="/article/Http-BasicAuth/" data-toggle="tooltip" data-placement="top" title="使用Node在服务端调用HTTP-Basic认证的API">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
     <!-- github isuue comment container-->
@@ -278,11 +273,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                          <a class="tag" href="/tags/#Node" title="Node">Node</a>
                         
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
-                        
-                          <a class="tag" href="/tags/#GitPage" title="GitPage">GitPage</a>
+                          <a class="tag" href="/tags/#Express" title="Express">Express</a>
                         
                     </div>
                 </section>
@@ -314,7 +307,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/About-My-Blog-Site/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/当我们调用Express的res-render/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
