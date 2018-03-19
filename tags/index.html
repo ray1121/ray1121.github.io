@@ -186,13 +186,25 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#Node" title="Node" rel="7">Node</a>
+                    <a href="#JavaScript" title="JavaScript" rel="3">JavaScript</a>
+                
+                    <a href="#Node" title="Node" rel="8">Node</a>
                 
                     <a href="#PM2" title="PM2" rel="0">PM2</a>
                 
                     <a href="#集群" title="集群" rel="0">集群</a>
                 
+                    <a href="#UML" title="UML" rel="0">UML</a>
+                
+                    <a href="#plantUML" title="plantUML" rel="0">plantUML</a>
+                
+                    <a href="#工具" title="工具" rel="2">工具</a>
+                
                     <a href="#Web" title="Web" rel="0">Web</a>
+                
+                    <a href="#Vue" title="Vue" rel="0">Vue</a>
+                
+                    <a href="#服务端渲染" title="服务端渲染" rel="0">服务端渲染</a>
                 
                     <a href="#Blog" title="Blog" rel="1">Blog</a>
                 
@@ -201,10 +213,6 @@
                     <a href="#GitPage" title="GitPage" rel="1">GitPage</a>
                 
                     <a href="#Redis" title="Redis" rel="1">Redis</a>
-                
-                    <a href="#JavaScript" title="JavaScript" rel="3">JavaScript</a>
-                
-                    <a href="#工具" title="工具" rel="2">工具</a>
                 
                     <a href="#HTTP" title="HTTP" rel="2">HTTP</a>
                 
@@ -216,12 +224,74 @@
                 
                     <a href="#NPM" title="NPM" rel="1">NPM</a>
                 
+                    <a href="#V8" title="V8" rel="1">V8</a>
+                
                     <a href="#Express" title="Express" rel="1">Express</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="JavaScript">
+                    <span class="tag-text">JavaScript</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Array-prototype-slice-call-arguments/">
+                        <h2 class="post-title">
+                            Array.prototype.slice.call(arguments)
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/ES7-ES7next/">
+                        <h2 class="post-title">
+                            为ES7&ES7+新特性开一个Note
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                ES语法小特性小记
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/JS-module/">
+                        <h2 class="post-title">
+                            JS的模块机制梳理和总结
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                “砖规”
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Node">
@@ -320,6 +390,25 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
+                     <a href="/article/Node的GC/">
+                        <h2 class="post-title">
+                            Node内存控制
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Node(V8)垃圾回收机制
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
                      <a href="/article/当我们调用Express的res-render/">
                         <h2 class="post-title">
                             当我们调用Express的res.render
@@ -366,8 +455,77 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="UML">
+                    <span class="tag-text">UML</span>
+                </span>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="plantUML">
+                    <span class="tag-text">plantUML</span>
+                </span>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="工具">
+                    <span class="tag-text">工具</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Gitbook-PDF/">
+                        <h2 class="post-title">
+                            Mac上将gitbook转化成pdf文档下载
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/VScode/">
+                        <h2 class="post-title">
+                            VScode(for JS develop)使用记录与分享
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                “真的可以说是良心编辑器了”
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Web">
                     <span class="tag-text">Web</span>
+                </span>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Vue">
+                    <span class="tag-text">Vue</span>
+                </span>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="服务端渲染">
+                    <span class="tag-text">服务端渲染</span>
                 </span>
                 
             </div>
@@ -464,107 +622,6 @@
                         <h2 class="post-title">
                             关于node-redis的优雅退出
                         </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="JavaScript">
-                    <span class="tag-text">JavaScript</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/Array-prototype-slice-call-arguments/">
-                        <h2 class="post-title">
-                            Array.prototype.slice.call(arguments)
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/ES7-ES7next/">
-                        <h2 class="post-title">
-                            为ES7&ES7+新特性开一个Note
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                ES语法小特性小记
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/JS-module/">
-                        <h2 class="post-title">
-                            JS的模块机制梳理和总结
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                “砖规”
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="工具">
-                    <span class="tag-text">工具</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/Gitbook-PDF/">
-                        <h2 class="post-title">
-                            Mac上将gitbook转化成pdf文档下载
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/VScode/">
-                        <h2 class="post-title">
-                            VScode(for JS develop)使用记录与分享
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                “真的可以说是良心编辑器了”
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -706,6 +763,32 @@
                         <h2 class="post-title">
                             一篇 NPM 小记
                         </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="V8">
+                    <span class="tag-text">V8</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/Node的GC/">
+                        <h2 class="post-title">
+                            Node内存控制
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Node(V8)垃圾回收机制
+                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->

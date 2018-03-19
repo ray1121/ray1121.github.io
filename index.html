@@ -202,6 +202,31 @@
 
 <div class="post-preview">
 
+    <a href="/article/Node的GC/">
+        <h2 class="post-title">
+            Node内存控制
+        </h2>
+        <h3 class="post-subtitle">
+            Node(V8)垃圾回收机制
+        </h3>
+        <div class="post-content-preview">
+            
+  : 聊一聊垃圾回收机制吧。  : 恩，垃圾回收是自动的。
+
+基本概念GC（Garbage collection）垃圾回收机制。目的是解释器去判别需要回收的内容，当解释器认为一个占着房子的人已经没有存在的意义了，就自动收回房子重新对外出租（available）。JS和PY都选择不相信程序员，选择自己操控内存问题。
+Node的对象都是分配在堆内存上，V8主要把内存分为 new-space ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-03-09
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/NPM小记/">
         <h2 class="post-title">
             一篇 NPM 小记
@@ -407,31 +432,6 @@ V8源码......
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/About-node-redis-quit/">
-        <h2 class="post-title">
-            关于node-redis的优雅退出
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            在redis的node客户端中官方文档上描述客户端断开与redis的连接的方式有两种：
-
-client.end()所谓的‘二话不说直接暴力断开’；官方文档上是这样描述end()方法的：
-
-Forcibly close the connection to the Redis server. Note that this does not wait until all replies have ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2017-12-22
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -467,7 +467,23 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                     <div class="tags">
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="7">Node</a>
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="3">JavaScript</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="8">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#工具" title="工具" rel="2">工具</a>
                             
                         
                             
@@ -493,14 +509,6 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                             
                         
                             
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="3">JavaScript</a>
-                            
-                        
-                            
-                            <a href="/tags/#工具" title="工具" rel="2">工具</a>
-                            
-                        
-                            
                             <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
                             
                         
@@ -518,6 +526,10 @@ Forcibly close the connection to the Redis server. Note that this does not wait 
                         
                             
                             <a href="/tags/#NPM" title="NPM" rel="1">NPM</a>
+                            
+                        
+                            
+                            <a href="/tags/#V8" title="V8" rel="1">V8</a>
                             
                         
                             
