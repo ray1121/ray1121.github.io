@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://isliulei.com/tags/HTTP/</loc>
-        <lastmod>2018-02-28T02:15:23.173Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://isliulei.com/tags/Blog/</loc>
         <lastmod>2018-03-02T01:50:54.345Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,13 +58,6 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/JavaScript/</loc>
-        <lastmod>2018-03-05T11:34:32.826Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://isliulei.com/tags/NPM/</loc>
         <lastmod>2018-03-07T09:24:52.555Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -86,15 +72,36 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/Node/</loc>
+        <loc>https://isliulei.com/tags/V8/</loc>
         <lastmod>2018-03-19T01:33:02.745Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/V8/</loc>
-        <lastmod>2018-03-19T01:33:02.745Z</lastmod>
+        <loc>https://isliulei.com/tags/Node/</loc>
+        <lastmod>2018-03-19T01:44:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/%E7%BC%93%E5%AD%98/</loc>
+        <lastmod>2018-03-19T01:44:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/HTTP/</loc>
+        <lastmod>2018-03-19T01:44:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/JavaScript/</loc>
+        <lastmod>2018-03-19T08:52:16.163Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
