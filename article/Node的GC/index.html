@@ -239,8 +239,8 @@
 <img src="/article/Node的GC/堆内内存.png">
 <img src="/article/Node的GC/堆外内存.png">
 <p>上图一表示堆内内存在一定循环次数之后达到溢出边缘，</p>
-<p> 图二可见，<code>external</code>和<code>rss</code>再不断增大但是其值早就突破了V8的内存上限。是因为<strong>堆外内存并不是V8进行内存分配的。</strong></p>
-<p> 下一篇所要讨论的缓存算法中，缓存就是一个有可能造成内存泄漏的场景。</p>
+<p> 图二可见，<code>external</code>和<code>rss</code>在不断增大但是其值早就突破了V8的内存上限。是因为<strong>堆外内存并不是V8进行内存分配的。</strong></p>
+<p> 下一篇所要讨论的<a href="https://isliulei.com/article/缓存算法/">缓存算法</a>中，缓存就是一个有可能造成内存泄漏的场景。</p>
 <p> 参考：</p>
 <blockquote>
 <p>《深入浅出NodeJS》– 朴灵</p>
