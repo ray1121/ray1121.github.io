@@ -365,6 +365,29 @@ Node的对象都是分配在堆内存上，V8主要把内存分为 new-space ...
 
 <div class="post-preview">
 
+    <a href="/article/node-Buffer/">
+        <h2 class="post-title">
+            Buffer与中文乱码问题
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            BufferBuffer 对象类似于数组，每一个元素都是16进制的两位数，即每一个元素可以表示一个 0-255 的值。在不同的编码下，字符串的每一个字符占用的元素个数不相同，在 UTF-8 编码下，每一个中文字占 3 个元素，字母和半角标点符号占1个元素。
+Buffer 的实例可以先指定大小后赋值，也可以像数组那样使用 index 访问该值，返回一个十进制的数字。
+12345678let s......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-02-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/Gitbook-PDF/">
         <h2 class="post-title">
             Mac上将gitbook转化成pdf文档下载
@@ -413,27 +436,6 @@ V8源码......
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/Node-WatchFile/">
-        <h2 class="post-title">
-            文件（夹）监听---Node原生 VS chokidar
-        </h2>
-        <h3 class="post-subtitle">
-            Node原生 VS chokidar
-        </h3>
-        <div class="post-content-preview">
-            前言最近在看vue-hackernews-2.0代码的时候看到在build配置中用了一个chokidar的文件监听模块，一时好奇为什么不用fs.watch的原生操作，忽然想到确实对于监听文件方面确实只是停留在配置gulp监听文件修改后自动转换的gulp.watch，以及简单配置已经高集成的webpack，似乎平时并没有机会经常用Node“干净”的再去做监控操作。所以这篇文章就是建立在介绍使用......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2018-01-25
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -473,11 +475,7 @@ V8源码......
                             
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="9">Node</a>
-                            
-                        
-                            
-                        
+                            <a href="/tags/#Node" title="Node" rel="10">Node</a>
                             
                         
                             
@@ -519,6 +517,10 @@ V8源码......
                             
                         
                             
+                            <a href="/tags/#NPM" title="NPM" rel="1">NPM</a>
+                            
+                        
+                            
                             <a href="/tags/#ES6" title="ES6" rel="1">ES6</a>
                             
                         
@@ -531,11 +533,11 @@ V8源码......
                             
                         
                             
-                            <a href="/tags/#NPM" title="NPM" rel="1">NPM</a>
+                            <a href="/tags/#V8" title="V8" rel="1">V8</a>
                             
                         
                             
-                            <a href="/tags/#V8" title="V8" rel="1">V8</a>
+                            <a href="/tags/#Buffer" title="Buffer" rel="1">Buffer</a>
                             
                         
                             
