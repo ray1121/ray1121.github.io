@@ -241,6 +241,9 @@
 <p>上图一表示堆内内存在一定循环次数之后达到溢出边缘，</p>
 <p> 图二可见，<code>external</code>和<code>rss</code>在不断增大但是其值早就突破了V8的内存上限。是因为<strong>堆外内存并不是V8进行内存分配的。</strong></p>
 <p> 下一篇所要讨论的<a href="https://isliulei.com/article/缓存算法/">缓存算法</a>中，缓存就是一个有可能造成内存泄漏的场景。</p>
+<p>此外，在Node的模块机制当中，模块是要先通过编译，然后就会被缓存起来，那么此时模块必然是属于老生代空间的。如果像下面的代码一样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = []</span><br><span class="line">exports.addArr = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    arr.push(<span class="string">'ray'</span>+<span class="built_in">Math</span>.random())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果此时在响应请求中不断地调用这个模块导出的函数，那么 arr 中就会堆积大量的元素，有可能导致内存泄漏。</p>
 <p> 参考：</p>
 <blockquote>
 <p>《深入浅出NodeJS》– 朴灵</p>
