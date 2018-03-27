@@ -202,6 +202,41 @@
 
 <div class="post-preview">
 
+    <a href="/article/eventLoop/">
+        <h2 class="post-title">
+            EventLoop
+        </h2>
+        <h3 class="post-subtitle">
+            Node的事件循环
+        </h3>
+        <div class="post-content-preview">
+            JS执行上下文简单的说，JS解释器在执行代码的时候会有一个执行环境，那么这个执行环境就是执行上下文。并且在从上往下的执行过程形成了一个执行上下文栈。这个栈的最底层就是 Global 全局栈。
+在解释器的内部调用执行上下文（执行一个函数）的时候，分为两个阶段：
+
+创建阶段
+创建作用域链
+创建变量，函数和参数
+确定this的值
+
+
+执行阶段
+设置变量值和函数的引用，解释并执行代码
+
+
+
+执行上下......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-03-27
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/缓存算法/">
         <h2 class="post-title">
             JS实现缓存算法（FIFO/LRU）
@@ -414,28 +449,6 @@ Buffer 的实例可以先指定大小后赋值，也可以像数组那样使用 
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/Array-prototype-slice-call-arguments/">
-        <h2 class="post-title">
-            Array.prototype.slice.call(arguments)
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            作用一句话概括就是将 arguments 转化为真正的数组输出出去。何为真正的数组？真正的数组是相对于“伪数组”来说的，常见的有 NodeList 与 HTMLCollection 还有 函数的参数 arguments。 这些伪数组最大的共同特点就是他们都具有 length 属性，并且属性名为数字，但是并不能用真正数组的那些像是 push(),pop(),slice()，这些方法。
-V8源码......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2018-01-27
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -471,11 +484,13 @@ V8源码......
                     <div class="tags">
                         
                             
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="7">JavaScript</a>
                             
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="10">Node</a>
+                            <a href="/tags/#Node" title="Node" rel="11">Node</a>
+                            
+                        
                             
                         
                             

@@ -86,13 +86,6 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/JavaScript/</loc>
-        <lastmod>2018-03-20T02:06:58.608Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://isliulei.com/tags/%E7%BC%93%E5%AD%98/</loc>
         <lastmod>2018-03-20T02:06:58.608Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -107,15 +100,22 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/Node/</loc>
+        <loc>https://isliulei.com/tags/Buffer/</loc>
         <lastmod>2018-03-20T06:20:08.146Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/Buffer/</loc>
-        <lastmod>2018-03-20T06:20:08.146Z</lastmod>
+        <loc>https://isliulei.com/tags/JavaScript/</loc>
+        <lastmod>2018-03-27T12:12:22.181Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://isliulei.com/tags/Node/</loc>
+        <lastmod>2018-03-27T12:12:22.181Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
