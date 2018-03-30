@@ -202,6 +202,29 @@
 
 <div class="post-preview">
 
+    <a href="/article/缓存算法/">
+        <h2 class="post-title">
+            JS实现缓存算法（FIFO/LRU）
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            FIFO最简单的一种缓存算法，设置缓存上限，当达到了缓存上限的时候，按照先进先出的策略进行淘汰，再增加进新的 k-v 。
+使用了一个对象作为缓存，一个数组配合着记录添加进对象时的顺序，判断是否到达上限，若到达上限取数组中的第一个元素key，对应删除对象中的键值。
+12345678910111213141516171819202122232425262728/** * FIFO队列算法实现缓存......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ray on
+        2018-03-28
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/eventLoop/">
         <h2 class="post-title">
             EventLoop
@@ -230,29 +253,6 @@
     <p class="post-meta">
         Posted by Ray on
         2018-03-27
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/缓存算法/">
-        <h2 class="post-title">
-            JS实现缓存算法（FIFO/LRU）
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            FIFO最简单的一种缓存算法，设置缓存上限，当达到了缓存上限的时候，按照先进先出的策略进行淘汰，再增加进新的 k-v 。
-使用了一个对象作为缓存，一个数组配合着记录添加进对象时的顺序，判断是否到达上限，若到达上限取数组中的第一个元素key，对应删除对象中的键值。
-12345678910111213141516171819202122232425262728/** * FIFO队列算法实现缓存......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ray on
-        2018-03-19
     </p>
 
 </div>
@@ -489,6 +489,10 @@ Buffer 的实例可以先指定大小后赋值，也可以像数组那样使用 
                         
                             
                             <a href="/tags/#Node" title="Node" rel="11">Node</a>
+                            
+                        
+                            
+                        
                             
                         
                             

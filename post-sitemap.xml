@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://isliulei.com/article/%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95/</loc>
+        <lastmod>2018-03-28T13:48:46.691Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://isliulei.com/article/eventLoop/</loc>
         <lastmod>2018-03-27T12:15:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>https://isliulei.com/article/node-Buffer/</loc>
         <lastmod>2018-03-20T06:20:08.146Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://isliulei.com/article/%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95/</loc>
-        <lastmod>2018-03-20T02:06:58.608Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
