@@ -107,6 +107,13 @@
     </url>
 
     <url>
+        <loc>https://isliulei.com/tags/%E7%AE%97%E6%B3%95/</loc>
+        <lastmod>2018-03-28T13:48:46.691Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://isliulei.com/tags/%E7%BC%93%E5%AD%98/</loc>
         <lastmod>2018-03-28T13:48:46.691Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -114,8 +121,8 @@
     </url>
 
     <url>
-        <loc>https://isliulei.com/tags/%E7%AE%97%E6%B3%95/</loc>
-        <lastmod>2018-03-28T13:48:46.691Z</lastmod>
+        <loc>https://isliulei.com/tags/Web%E5%AE%89%E5%85%A8/</loc>
+        <lastmod>2018-04-01T10:26:08.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

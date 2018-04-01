@@ -14,11 +14,11 @@
 
     <title>
         
-            为ES7&amp;ES7+新特性开一个Note - 刘雷的博客 | Ray&#39;s Blog
+            拾碎Web安全 - 刘雷的博客 | Ray&#39;s Blog
                 
     </title>
 
-    <link rel="canonical" href="https://isliulei.com/article/ES7-ES7next/">
+    <link rel="canonical" href="https://isliulei.com/article/web-security/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -79,14 +79,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                              <a class="tag" href="/tags/#Web安全" title="Web安全">Web安全</a>
                             
                         </div>
-                        <h1>为ES7&amp;ES7+新特性开一个Note</h1>
-                        <h2 class="subheading">ES语法小特性小记</h2>
+                        <h1>拾碎Web安全</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Ray on
-                            2017-12-24
+                            2018-04-01
                         </span>
                     </div>
                 
@@ -203,71 +203,164 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6较ES5来说可能是一个较大的版本变动，增添了很多特性或者语法糖，使得整个JS语言的使用体验又向前迈了一大步，但是ES6（ECMAScript2015）之后，每一年都会有新的语言强化版本更新出现，所谓的ES7等，这些变动都没有再像ES6那么多。加之很多新特性在正式发布之前就一定会至少有两个成熟的实现支持，使得在ES6之后，新增特性版本上就变得很模糊了，尤其是在Node环境中，有些时候对于一些小的地方的新特性你都已经写了很多次了都有可能不知道用的到底是哪个版本了。</p>
-<p>我本地和开发环境都已经迁移和更新到了Node的最新LTS版本8.9.4对新版本的语法支持都做得已经很好了，以下特性虽然归在ES6之后的版本，但是Node已经有了支持。而对于语言的新语法特性来说，个人认为最好的方式就是理解语言重要部分之外多关注语言，然后多积累吧。所以我把这篇文章当做是一个对ES6之后的语法的一些“小地方”的一个笔记，记录积累那些小的特性或者语法，当然一些重要的地方比如说像<strong>共享内存</strong>和<strong>原子操作</strong>等这种，感觉内容很多的块就不会在这里记了。</p>
-<p>以前刚学PY的时候觉得python中的装饰器这种这么骚气的语法糖为啥JS不弄一个，结果一查JS的Decorator（装饰器）草案已经提出了。</p>
-<blockquote>
-<p>不管是哪一款优秀的开源框架还是哪一门优秀并且开发者使用的多的语言，往前发展都会对其他优秀的框架语言进行借鉴，这种看似竞争实则携手发展的面貌对于开发者来说本身就是一份回馈也是一份督促。</p>
-</blockquote>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="表示乘方"><a href="#表示乘方" class="headerlink" title="**表示乘方"></a><code>**</code>表示乘方</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>**<span class="number">3</span>)<span class="comment">//输出8</span></span><br></pre></td></tr></table></figure>
-<h3 id="Trailing-commas（函数参数的尾逗号）"><a href="#Trailing-commas（函数参数的尾逗号）" class="headerlink" title="Trailing commas（函数参数的尾逗号）"></a>Trailing commas（函数参数的尾逗号）</h3><p>之前数组的最后一个元素和对象的最后一个属性后面都可以加逗号，现在<strong>函数的最后一个参数后面可以加逗号了</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">	a,</span></span></span><br><span class="line"><span class="function"><span class="params">	b,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span></span><br></pre></td></tr></table></figure>
-<h3 id="数组新增了includes-方法"><a href="#数组新增了includes-方法" class="headerlink" title="数组新增了includes()方法"></a>数组新增了<code>includes()</code>方法</h3><p>在之前判定数组中是否包含某个元素的方式是indexOf,返回值如果是-1则表示没有包含，现在<strong>用<code>[].includes(ele)</code>返回值为Bollean可以判断是否包含了。</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.includes(<span class="number">1</span>)<span class="comment">//返回值为true</span></span><br><span class="line">a.includes(<span class="number">4</span>)<span class="comment">//返回值为false</span></span><br></pre></td></tr></table></figure>
-<h3 id="str-padStart-和str-padEnd"><a href="#str-padStart-和str-padEnd" class="headerlink" title="str.padStart()和str.padEnd()"></a><code>str.padStart()</code>和<code>str.padEnd()</code></h3><p>字符串新增了两个方法，参数是number，表示当<strong>字符串的长度达不到方法的参数的长度时在末尾或者开头用空格补齐长度</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="string">'abc'</span></span><br><span class="line">b.padStart(<span class="number">5</span>)<span class="comment">//返回值为'  abc'</span></span><br><span class="line">b.padEnd(<span class="number">5</span>)<span class="comment">//返回值为'abc  '</span></span><br></pre></td></tr></table></figure>
-<h3 id="对象的Rest-amp-Spread"><a href="#对象的Rest-amp-Spread" class="headerlink" title="对象的Rest&amp;Spread"></a>对象的Rest&amp;Spread</h3><p>对于数组的REST和Spread已经是经常用的了，对于对象的属性的Rest和Spread与之类似</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;x,y,...z&#125;=&#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>,<span class="attr">z</span>:<span class="number">3</span>,<span class="attr">d</span>:<span class="number">4</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x)<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(z)<span class="comment">//输出&#123; z: 3, d: 4 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> n = &#123;x,y,...z&#125;</span><br><span class="line"><span class="built_in">console</span>.log(n)<span class="comment">//输出&#123;x:1,y:2,z:3,d:4&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Object-values-obj-和Object-entries-obj"><a href="#Object-values-obj-和Object-entries-obj" class="headerlink" title="Object.values(obj)和Object.entries(obj)"></a><code>Object.values(obj)</code>和<code>Object.entries(obj)</code></h3><p>在ES5引入了遍历对象key的方法<code>Object.keys(obj)</code>之后再ES8新增了新的对应遍历对象值的方法。三者的返回值都是数组。</p>
-<p><code>Object.values(obj)</code>返回的是对应的value数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.values(obj)<span class="comment">//输出[ 1, 2 ]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> <span class="built_in">Object</span>.values(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// 1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>Object.entries(obj)</code>返回的是有每一对键值对数组组成的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.entries(obj)<span class="comment">//输出[ [ 'a', 1 ], [ 'b', 2 ] ]</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log([key, value]); <span class="comment">// ['a', 1], ['b', 2]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Object-getOwnPropertyDescriptors-obj-获取属性信息"><a href="#Object-getOwnPropertyDescriptors-obj-获取属性信息" class="headerlink" title="Object.getOwnPropertyDescriptors(obj)获取属性信息"></a><code>Object.getOwnPropertyDescriptors(obj)</code>获取属性信息</h3><p>由之前的<code>Object.getOwnPropertyDescriptor(obj,&#39;propName&#39;)</code>而来返回的是对象所有属性的描述信息,返回值是一个对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">1</span>,<span class="attr">z</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">x</span>: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  y: &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  z: &#123; <span class="attr">value</span>: <span class="number">2</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125; &#125;</span><br><span class="line">====================================================  </span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(a,<span class="string">'x'</span>)</span><br><span class="line">||输出值</span><br><span class="line">\/</span><br><span class="line">&#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>补充：</strong><br>ES5开始对象的属性都具备了属性描述符</p>
-<p><code>Object.defineProperty</code>定义对象属性</p>
-<pre><code class="js"><span class="built_in">Object</span>.defineProperty( myObject, <span class="string">"a"</span>, {
-    value: <span class="number">2</span>,
-        writable: <span class="literal">true</span>, 
-        configurable: <span class="literal">true</span>, 
-        enumerable: <span class="literal">true</span>
-     } );
-</code></pre>
-<p>说明：</p>
+                <h2 id="拾碎Web安全"><a href="#拾碎Web安全" class="headerlink" title="拾碎Web安全"></a>拾碎Web安全</h2><h3 id="XSS-跨站脚本攻击"><a href="#XSS-跨站脚本攻击" class="headerlink" title="XSS 跨站脚本攻击"></a><strong>XSS 跨站脚本攻击</strong></h3><p><strong>实质：我们想在我们的程序中引用用户输入的数据，但是用户输入的数据被当成可执行的脚本代码来执行了</strong></p>
 <ol>
-<li><p>writable:是否可写；即值是不是能被set变，严格模式下修改writable：false的属性值是会抛出错误</p>
-</li>
-<li><p>Configurable是否可用Object.defineProperty来配置，改为false之后则不管是不是严格模式下在想来修改属性描述都会抛出错误，并且被修改为不可配置的这个属性不能用delete myObject.a 这种方式删掉</p>
-</li>
-<li><p>Enumerable控制的是属性是否会出现在对象的属性枚举中，比如for..in 循环（<strong>但是可以通过 in 操作符来判断是否存在</strong>），<strong>“可枚举”相当于“可以出现在对象的属性遍历中”</strong>判断是否可枚举myObject.propertyIsEnumerable( “a” );</p>
-</li>
+<li>非持久XSS</li>
 </ol>
+<p>利用系统的反馈行为漏洞，诱导用户主动点击，从而发起攻击，即<strong>把攻击代码直接写在URL中</strong> 系统通过url直接拿到内容进行无过滤渲染。</p>
+<p>常见的当你的前端代码中有类似如下的：</p>
+<p><code>location.href.substring(location.href.indexOf(&#39;default=&#39;))</code> </p>
+<p>即会<strong>根据直接获取用户发起输入查询请求的 url 的内容进行页面直接渲染</strong>在关闭了现代浏览器的默认开启的反射性XSS过滤(<strong>ctx.set(X-Xss-Protection:0)</strong>)之后你就会看到当你输入：</p>
+<p><code>http://xxx.com?default=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+<p>或者，当用户的输入直接出现在了HTML属性中也会造成这种情况，即：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- content 直接取自用户输入 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"#&#123;content&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"1"</span> <span class="attr">onload</span> = <span class="string">"alert(1)"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 1" onload = "alert(1) 是用户输入--&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>存储型XSS</li>
+</ol>
+<p>最典型的场景就是黑客通过发表一篇博客，该博客里面含有恶意脚本，被后端无过滤存储到数据库中，每一个浏览该篇文章的用户都会中招。</p>
+<p><strong>防御策略：</strong></p>
 <ul>
-<li><strong>关于in 和 obj.hasOwnProperty()</strong></li>
+<li>前端渲染的时候对任何的字段都需要做 escape 转义编码。（<code>&lt;</code>,<code>&gt;</code>,双引号，单引号转义）</li>
+<li>尽可能的选择对渲染数据都来自于后端，别从URL中取数据直接渲染</li>
+<li>设置HttpOnly的 cookie 即document.cookie 获取不到了</li>
+<li><strong>CSP 内容安全策略</strong>指定什么资源是可以执行的。<ul>
+<li><code>ctx.set(&#39;Content-Security-Prolicy&#39;,&#39;default-src:&#39;self&#39;&#39;)</code></li>
 </ul>
-<p>in 操作符会检查属性是否在对象及其 Prototype 原型链中。相比之下， hasOwnProperty(..) 只会检查属性是否在 myObject 对象中，不会检查 Prototype 链。</p>
-<h3 id="Async-amp-Await"><a href="#Async-amp-Await" class="headerlink" title="Async&amp;Await"></a>Async&amp;Await</h3><p>异步的“终极解决方案”，已经是很常用的东西了，在这里就不过多介绍了。</p>
-<p>由于Node的主场景（网络IO和文件IO）和JS的语言特性，异步的处理一直都是一个很大的一块，所以关于异步的总结我会尽快梳理成一篇完整的博客。</p>
-<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续会有更新和补充。</p>
-<p>关于学习，语法这种事情最好的方式就是自己多有意识的多用几次，这样遇到符合使用场景的时候就会可以想到，哪怕细节记得不清了也可以很快解决。由于平时主要在Node端写代码所以测试语法最快的方式就是在node REPL中敲一遍，加深了印象也得到了结果，当然有一个方便查看的表也是很重要的<a href="http://kangax.github.io/compat-table/es2016plus/" target="_blank" rel="noopener">ECMAScript compatibility table</a></p>
+</li>
+</ul>
+<p><strong>关于富文本</strong></p>
+<ul>
+<li>黑名单<ul>
+<li>过滤Script标签</li>
+<li>过滤<code>javascript:</code></li>
+<li>过滤onerrer</li>
+</ul>
+</li>
+<li>白名单<ul>
+<li><strong>只允许特定标签和属性</strong></li>
+<li>遍历富文本中的dom节点的每一个标签名，标签的属性</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF 跨站请求伪造"></a><strong>CSRF 跨站请求伪造</strong></h3><p>用户在登录了网站A的前提下，访问了一个危险网站B，危险网站B带着网站A的用户登录的cookies开始向网站A发起构造好的请求。</p>
+<p>特点：</p>
+<ul>
+<li>危险网站B并<strong>不需要访问网站A的前端</strong></li>
+<li>请求的 <strong>referer 是B网站</strong>。</li>
+</ul>
+<p>策略：</p>
+<ul>
+<li>禁止第三方网站带上本网站的cookie<ul>
+<li><strong>在cookie里面新增了一个<code>same-site</code>属性</strong>（strict，lax），规定只有来自同一个站点的请求才会带有 same-site属性的cookie。 </li>
+<li>针对网站B<strong>不访问A的前端</strong>，可以设置关键信息的提交设置<strong>验证码</strong><ul>
+<li><a href="https://www.npmjs.com/package/ccap" target="_blank" rel="noopener">ccap</a> Node端生成验证码图片的第三方模块 </li>
+</ul>
+</li>
+<li>针对网站B<strong>不访问A的前端</strong>，可以使用Token的方法<ul>
+<li>在服务端生成一个随机数（token），并且在服务端需要放到<strong>两个地方</strong>，<strong>cookies中</strong>，和<strong>页面表单</strong>中，二者缺一不可，只有表单中的 token那么B可以随便捏造一个假的发送，只有cookie那么无法比较。</li>
+<li>前端的表单一般使用 type=hiden 的 input标签来存放这个后端来的token值</li>
+<li>提交表单的时候进行校验，<strong>token值是否是空</strong>，<strong>校验表单中的token和cookie中的token是否一样</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Token的问题</strong></p>
+<p>将token放在表单中是可行的，但是如果一个页面要进行ajax请求的话，需要使用另外一种做法就是将 token 放到页面的meta标签中，在ajax请求的时候要从meta标签中获取那个随机数。</p>
+<p><strong>Cookie</strong></p>
+<p>特性：</p>
+<ul>
+<li>Cookie 遵守<strong>同源策略</strong></li>
+<li>Cookie 在前端可以通过 <code>document.cookie=</code>来进行<strong>追加</strong>，但是<strong>不能覆盖</strong>（未使用http-only）但是<strong>可以篡改以前的同名的cookie</strong></li>
+<li>Cookie <strong>只能通过有效期设置为过期的时间才能删除</strong></li>
+</ul>
+<p>作用：</p>
+<ul>
+<li>存储个性化设置（比如个性化皮肤）</li>
+<li>存储未登录的用户的一些唯一标识</li>
+<li>存储区已登录用户的凭证</li>
+<li>存储其他业务数据</li>
+</ul>
+<h3 id="登录相关"><a href="#登录相关" class="headerlink" title="登录相关"></a>登录相关</h3><p><strong>防止用户篡改Cookie值</strong></p>
+<p>比如如果网站是使用给客户端使用 “userId=1” 的方式来进行登录态凭证的设置，那么当前端调用 <code>document.cookie = &#39;userId = 2&#39;</code> 那么该用户就得到了用户2的身份。</p>
+<p>解决办法1，在服务端再一次生成一个加密的<strong>签名</strong>，即使用 <strong>用户ID+签名</strong> 的Cookie组合</p>
+<ol>
+<li>第一步生成加密签名序列号</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加密工具模块</span></span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>)</span><br><span class="line"><span class="keyword">const</span> Key = <span class="string">'ray#@1234'</span><span class="comment">//设置一个签名使用的密钥 </span></span><br><span class="line"><span class="keyword">const</span> cry = &#123;&#125;</span><br><span class="line">cry.cryptoUserId = <span class="function"><span class="keyword">function</span>(<span class="params">userId</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sign = crypto.createHmac(<span class="string">'sha256'</span>,Key)</span><br><span class="line">    sign.update(userId+<span class="string">''</span>)<span class="comment">//参数只接受字符串，所以把用户id转换为字符串</span></span><br><span class="line">    <span class="keyword">return</span> sign.digest(<span class="string">'hex'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = cry</span><br></pre></td></tr></table></figure>
+<ol>
+<li>因为<strong>签名是一个不可逆的算法</strong>，不可能根据签名的值倒推出原来的明文是多少。所以解决的办法是，<strong>将签名过的字符串和用户登录Id一起发去客户端</strong>，根据客户端带回来的 userId 和 sign 值在服务端算 userId 的加密签名是否等于用户带来的 sign 从而判断是不是已经被篡改之后的 userId 。</li>
+</ol>
+<p><strong>方法二：Session 认证</strong></p>
+<p>即在Cookie中只set进一个存在服务端中的 seesionID（随机字符串） ，用户请求带来sessionId之后再服务端判断用户身份。</p>
+<h3 id="点击劫持问题"><a href="#点击劫持问题" class="headerlink" title="点击劫持问题"></a>点击劫持问题</h3><p>利用一个<strong>透明度被设为 0 的 Iframe 引用目标网站</strong>，诱导用户<strong>真实点击</strong>，用户其实点击的操作是在操作目标网站的某些操作。</p>
+<p>防御点击劫持的办法:</p>
+<ol>
+<li>利用页面被 iframe 引用的时候他的 top 对象是不等于 window 对象的特点（一个正常页面的top === window）可以在网站的源 html 中使用 javascript 做判断。但是当 iframe 设置 <strong>sand-box</strong>属性时 是可以做到禁止原页面的JS脚本的功能的。</li>
+<li>在服务端<strong>设置 <code>X-Frame-Options</code></strong> 来禁止或者允许部分的网站对我的页面进行 iframe 内嵌</li>
+</ol>
+<h3 id="HTTP-传输窃听"><a href="#HTTP-传输窃听" class="headerlink" title="HTTP 传输窃听"></a>HTTP 传输窃听</h3><p>“traceroute www.baidu.com” 查看经过多少节点</p>
+<p><strong>在一个浏览器到服务器中间会经过很多的链路以及代理服务器</strong>，他们都有机会去<strong>窃听你的请求</strong>和<strong>替换掉本来的响应</strong>。</p>
+<p>如果把用户登录请求时的用户名和密码都设置为明文….</p>
+<p>如果你想获得的响应中被中间商在响应中增加个大量的广告….</p>
+<p>最常见的例子：当你连接了某一个Wifi之后去访问百度，最后你却得到的页面是 wifi 运营商让你输入用户名和密码，这就是运营商的http劫持</p>
+<p>解决策略：HTTPS</p>
+<h3 id="密码安全"><a href="#密码安全" class="headerlink" title="密码安全"></a>密码安全</h3><p><strong>密码泄露渠道</strong>：</p>
+<ul>
+<li>网站数据库被盗</li>
+<li>服务器被入侵，得到密码就转发</li>
+<li>通讯过程被窃听</li>
+<li>撞库（人们习惯不同网站注册的时候使用同一套密码）</li>
+</ul>
+<p><strong>应对策略：</strong></p>
+<ul>
+<li><strong>不用明文对密码进行存储</strong>，对密码进行单向变换<ul>
+<li>加强复杂度的变换测试，<code>md5(sha256(xxx+盐+花样字符串))</code> ，去应对现在出现的“彩虹表”（根据md5值反推明文的表）。</li>
+</ul>
+</li>
+<li>重视密码传输过程的安全性<ul>
+<li>https 传输</li>
+<li>频率限制（不允许连续多次的去试探密码登录）</li>
+<li>前端加密（意义有限），但是可以有效防止撞库的情况出现。</li>
+</ul>
+</li>
+</ul>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p><code>select * from user where userId = ${inputId} and password = ${inputPasswod}</code></p>
+<p>上述sql语句想根据获取的用户输入id直接准备去查数据库，用户精明的输入了 <code>1&#39; or &#39;1&#39;=&#39;1</code></p>
+<p><code>select * from user where userId = 1 and password = &#39;1&#39; or &#39;1&#39;=&#39;1&#39;</code></p>
+<p>sql注入的原理非常想XSS攻击的原理，执行了不该执行的代码。</p>
+<p>防御：</p>
+<ul>
+<li>关闭错误输出（不要把后端的错误日志暴露给前端）</li>
+<li>转义</li>
+<li>mysql提供的参数化查询（？数组的形式</li>
+<li>ORM（对象关系映射）<ul>
+<li>Node 中的 <a href="https://www.npmjs.com/package/sequelize" target="_blank" rel="noopener">sequelize框架</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="DOS-Denial-of-Service-拒绝服务攻击-amp-DDOS大规模分布式拒绝服务攻击"><a href="#DOS-Denial-of-Service-拒绝服务攻击-amp-DDOS大规模分布式拒绝服务攻击" class="headerlink" title="DOS(Denial of Service)拒绝服务攻击 &amp; DDOS大规模分布式拒绝服务攻击"></a>DOS(Denial of Service)拒绝服务攻击 &amp; DDOS大规模分布式拒绝服务攻击</h3><p>种类：</p>
+<ul>
+<li>TCP半连接<ul>
+<li>只进行两次握手就不理人家了</li>
+</ul>
+</li>
+<li>http连接</li>
+<li>攻击DNS服务器</li>
+</ul>
 
                 <blockquote>
                     本文为原创文章作为学习交流笔记，如有错误请您评论指教 <br/>
-                    转载请注明来源：<a href="https://isliulei.com/article/ES7-ES7next/" rel="noopener" title="https://isliulei.com/article/ES7-ES7next/">https://isliulei.com/article/ES7-ES7next/</a>
+                    转载请注明来源：<a href="https://isliulei.com/article/web-security/" rel="noopener" title="https://isliulei.com/article/web-security/">https://isliulei.com/article/web-security/</a>
                     </blockquote>
                 <hr>
 
                
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/Node-WatchFile/" data-toggle="tooltip" data-placement="top" title="文件（夹）监听---Node原生 VS chokidar">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/About-node-redis-quit/" data-toggle="tooltip" data-placement="top" title="关于node-redis的优雅退出">Next Post &rarr;</a>
+                            <a href="/article/缓存算法/" data-toggle="tooltip" data-placement="top" title="JS实现缓存算法（FIFO/LRU）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -308,7 +401,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                          <a class="tag" href="/tags/#Web安全" title="Web安全">Web安全</a>
                         
                     </div>
                 </section>
@@ -340,7 +433,7 @@
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
     var gitment = new Gitment({
-      id: 'https://isliulei.com/article/ES7-ES7next/', // 可选。默认为 location.href
+      id: 'https://isliulei.com/article/web-security/', // 可选。默认为 location.href
       owner: 'ray1121',
       repo: 'ray1121.github.io',
       oauth: {
